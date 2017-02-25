@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace BLL.Services
 {
-    class TopicService : IMainService<TopicDTO>
+    public class TopicService : IMainService<TopicDTO>
     {
         private IUnitOfWork DB { get; set; }
 

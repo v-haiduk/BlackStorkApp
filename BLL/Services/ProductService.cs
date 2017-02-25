@@ -9,10 +9,11 @@ using AutoMapper;
 
 namespace BLL.Services
 {
-    class ProductService : IMainService<ProductDTO>
+    public class ProductService : IMainService<ProductDTO>
     {
         private IUnitOfWork DB { get; set; }
 
+        //EFUnitOfWork will be used as the object of the IUnitOfWork
         public ProductService(IUnitOfWork database)
         {
             DB = database;
