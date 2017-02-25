@@ -1,0 +1,14 @@
+﻿using System;
+
+
+namespace DAL.Entities
+{
+    public class Product
+    {
+        public int ProductId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string PathForMainPhoto { get; set; }
+        //add fields for other photo, which will be in slider
+    }
+}
