@@ -7,6 +7,10 @@ using BLL.Services;
 using BLL.Interfaces;
 using System.Web.Mvc;
 using BLL.DTO;
+using DAL.Entities;
+using DAL.Interfaces;
+using DAL.Repositories;
+
 
 namespace BlackStorkApp.Util
 {
@@ -24,6 +28,8 @@ namespace BlackStorkApp.Util
         {
             kernel.Bind<IMainService<TopicDTO>>().To<TopicService>();
             kernel.Bind<IMainService<ProductDTO>>().To<ProductService>();
+
+            //kernel.Bind<IRepository<Product>>().To<>();
         }
 
         public object GetService(Type serviceType)

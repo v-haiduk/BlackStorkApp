@@ -4,7 +4,7 @@ namespace DAL.Entities
 {
     public class UserAccount
     {
-        public int UserId { get; set; }
+        public int UserAccountId { get; set; }
         public string Login { get; set; }
         public string HashOfPassword { get; set; }
     }

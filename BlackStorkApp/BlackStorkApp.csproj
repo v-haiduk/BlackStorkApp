@@ -248,6 +248,10 @@
       <Project>{2fc143d3-e7b5-4a0c-aee0-eda04979d16b}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{b0d77f88-0a13-4c68-b439-fe0b54748ec8}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

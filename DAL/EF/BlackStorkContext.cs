@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace DAL.EF
 {
-    class BlackStorkContext : DbContext
+    public class BlackStorkContext : DbContext
     {
         public DbSet<Colour> Colours { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -13,10 +13,11 @@ namespace DAL.EF
         public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
 
-        static BlackStorkContext()
-        {
-            Database.SetInitializer<BlackStorkContext>(new BlackStorkDbInitializer());
-        }
-        public BlackStorkContext(string connectionString) : base(connectionString) { }
+        //static BlackStorkContext()
+        //{
+        //    Database.SetInitializer<BlackStorkContext>(new BlackStorkDbInitializer());
+        //}
+
+        public BlackStorkContext() : base("BlackStorkContext") { }
     }
 }

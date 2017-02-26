@@ -11,18 +11,18 @@ namespace BLL.Services
 {
     public class TopicService : IMainService<TopicDTO>
     {
-        private IUnitOfWork DB { get; set; }
+        private IUnitOfWork uow { get; set; }
 
         public TopicService(IUnitOfWork database)
         {
-            DB = database;
+            uow = database;
         }
 
         public IEnumerable<TopicDTO> GetAllElements()
         {
             Mapper.Initialize(configuration => configuration.CreateMap<Topic, TopicDTO>());
 
-            return Mapper.Map<IEnumerable<Topic>, List<TopicDTO>>(DB.Topics.GetAllElements());
+            return Mapper.Map<IEnumerable<Topic>, List<TopicDTO>>(uow.Topics.GetAllElements());
         }
 
         public TopicDTO GetElement(int? id)
@@ -32,7 +32,7 @@ namespace BLL.Services
                 throw new ValidationException("????????", "");      //нельзя писать, что id не установлен. надо придумать текст
             }
 
-            var topic = DB.Topics.GetElement(id.Value);
+            var topic = uow.Topics.GetElement(id.Value);
             if (topic == null)
             {
                 throw new ValidationException("Извините, но ничего не найдено", "");
@@ -52,8 +52,8 @@ namespace BLL.Services
                 DateOfCreate = element.DateOfCreate
             };
 
-            DB.Topics.Create(topic);
-            DB.SaveChanges();
+            uow.Topics.Create(topic);
+            uow.SaveChanges();
         }
 
         public void UpdateElement(TopicDTO element)
@@ -65,8 +65,8 @@ namespace BLL.Services
                 DateOfCreate = element.DateOfCreate
             };
 
-            DB.Topics.Update(topic);
-            DB.SaveChanges();
+            uow.Topics.Update(topic);
+            uow.SaveChanges();
         }
 
         public void DeleteElement(int? id)
@@ -76,13 +76,13 @@ namespace BLL.Services
                 throw new ValidationException("", "");
             }
 
-            DB.Products.Delete(id.Value);
-            DB.SaveChanges();
+            uow.Products.Delete(id.Value);
+            uow.SaveChanges();
         }
 
         public void Dispose()
         {
-            DB.Dispose();
+            uow.Dispose();
         }
     }
 }

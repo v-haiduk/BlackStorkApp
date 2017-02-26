@@ -13,9 +13,9 @@ namespace DAL.Repositories
         private UserAccountRepository userAccountRepository;
         private UserProfileRepository userProfileRepository;
 
-        public EFUnitOfWork(string connectionString)
+        public EFUnitOfWork()
         {
-            db = new BlackStorkContext(connectionString);
+            db = new BlackStorkContext();
         }
 
         public IRepository<Product> Products
@@ -74,6 +74,9 @@ namespace DAL.Repositories
         //Implementation of combined template
         private bool disposed = false;
 
+        /// <summary>
+        /// Protected implementation of Dispose pattern.
+        /// </summary>
         public virtual void Dispose(bool disposing)
         {
             if (!disposed)
@@ -86,6 +89,9 @@ namespace DAL.Repositories
             }
         }
 
+        /// <summary>
+        /// Protected implementation of Dispose pattern.
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);

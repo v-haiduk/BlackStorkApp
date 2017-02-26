@@ -11,19 +11,19 @@ namespace BLL.Services
 {
     public class ProductService : IMainService<ProductDTO>
     {
-        private IUnitOfWork DB { get; set; }
+        private IUnitOfWork uow { get; set; }
 
         //EFUnitOfWork will be used as the object of the IUnitOfWork
         public ProductService(IUnitOfWork database)
         {
-            DB = database;
+            uow = database;
         }
 
         public IEnumerable<ProductDTO> GetAllElements()
         {
             Mapper.Initialize(configuration => configuration.CreateMap<Product, ProductDTO>());
 
-            return Mapper.Map<IEnumerable<Product>, List<ProductDTO>>(DB.Products.GetAllElements());
+            return Mapper.Map<IEnumerable<Product>, List<ProductDTO>>(uow.Products.GetAllElements());
         }
 
         public ProductDTO GetElement(int? id)
@@ -33,7 +33,7 @@ namespace BLL.Services
                 throw new ValidationException("????????", "");      //нельзя писать, что id не установлен. надо придумать текст
             }
 
-            var product = DB.Products.GetElement(id.Value);
+            var product = uow.Products.GetElement(id.Value);
             if (id == null)
             {
                 throw new ValidationException("Извините, но ничего не найдено", "");
@@ -53,8 +53,8 @@ namespace BLL.Services
                 PathForMainPhoto = element.pathForMainPhoto
             };
 
-            DB.Products.Create(product);
-            DB.SaveChanges();
+            uow.Products.Create(product);
+            uow.SaveChanges();
         }
 
         public void UpdateElement(ProductDTO element)
@@ -66,8 +66,8 @@ namespace BLL.Services
                 PathForMainPhoto = element.pathForMainPhoto
             };
 
-            DB.Products.Update(product);
-            DB.SaveChanges();
+            uow.Products.Update(product);
+            uow.SaveChanges();
         }
 
         public void DeleteElement(int? id)
@@ -77,13 +77,13 @@ namespace BLL.Services
                 throw new ValidationException("", "");
             }
 
-            DB.Products.Delete(id.Value);
-            DB.SaveChanges();
+            uow.Products.Delete(id.Value);
+            uow.SaveChanges();
         }
 
         public void Dispose()
         {
-            DB.Dispose();
+            uow.Dispose();
         }
     }
 }

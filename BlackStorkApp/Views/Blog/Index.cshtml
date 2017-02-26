@@ -1,9 +1,16 @@
-﻿
+﻿@model IEnumerable<BlackStorkApp.Models.TopicModel>
 @{
     ViewBag.Title = "Blog";
 }
 
 <h2>Blog</h2>
 
-
+@foreach (BlackStorkApp.Models.TopicModel topic in Model)
+{
+    <div class="row">
+        <p>@topic.Header</p>
+        <p>@topic.Description</p>
+        <p>@topic.DateOfCreate</p>
+    </div>
+}
 

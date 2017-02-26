@@ -10,3 +10,5 @@ c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\DAL
 c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.dll
 c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.pdb
+c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.Migrations.MigrateDB_10.resources
+c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
