@@ -39,7 +39,9 @@ namespace BlackStorkApp.App_Start
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            var kernel = new StandardKernel();
+            var modules = new Ninject.Modules.INinjectModule[]
+            {new BLL.Infrastructure.ServiceModule("DefaultConnection")};
+            var kernel = new StandardKernel(modules);
             try
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
@@ -61,6 +63,7 @@ namespace BlackStorkApp.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            System.Web.Mvc.DependencyResolver.SetResolver(new BlackStorkApp.Util.NinjectDependencyResolver(kernel));
         }        
     }
 }

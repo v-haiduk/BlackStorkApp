@@ -24,9 +24,15 @@ namespace BlackStorkApp.Controllers
         {
             IEnumerable<TopicDTO> topicDTOs = topicService.GetAllElements();
             Mapper.Initialize(configuration => configuration.CreateMap<TopicDTO, TopicModel>());
-            var topicsForDisplay = Mapper.Map<IEnumerable<TopicDTO>, List<TopicModel>> (topicDTOs);
+            var topicsForDisplay = Mapper.Map<IEnumerable<TopicDTO>, List<TopicModel>>(topicDTOs);
 
-            return View("Blog", topicsForDisplay);
+            return View(topicsForDisplay);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            topicService.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
