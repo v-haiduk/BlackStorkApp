@@ -8,6 +8,9 @@ namespace BLL.Interfaces
     {
         IEnumerable<T> GetAllElements();
         T GetElement(int? id);
+        void CreateElement(T element);
+        void UpdateElement(T element);
+        void DeleteElement(int? id);
         void Dispose();
     }
 }

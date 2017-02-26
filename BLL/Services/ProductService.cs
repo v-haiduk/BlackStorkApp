@@ -44,6 +44,43 @@ namespace BLL.Services
             return Mapper.Map<Product, ProductDTO>(product);
         }
 
+        public void CreateElement(ProductDTO element)
+        {
+            Product product = new Product
+            {
+                Name = element.Name,
+                Description = element.Description,
+                PathForMainPhoto = element.pathForMainPhoto
+            };
+
+            DB.Products.Create(product);
+            DB.SaveChanges();
+        }
+
+        public void UpdateElement(ProductDTO element)
+        {
+            Product product = new Product
+            {
+                Name = element.Name,
+                Description = element.Description,
+                PathForMainPhoto = element.pathForMainPhoto
+            };
+
+            DB.Products.Update(product);
+            DB.SaveChanges();
+        }
+
+        public void DeleteElement(int? id)
+        {
+            if (id == null)
+            {
+                throw new ValidationException("", "");
+            }
+
+            DB.Products.Delete(id.Value);
+            DB.SaveChanges();
+        }
+
         public void Dispose()
         {
             DB.Dispose();

@@ -14,7 +14,6 @@ namespace BlackStorkApp.Controllers
     public class BlogController : Controller
     {
         private IMainService<TopicDTO> topicService;
-        // GET: Blog
 
         public BlogController(IMainService<TopicDTO> service)
         {
