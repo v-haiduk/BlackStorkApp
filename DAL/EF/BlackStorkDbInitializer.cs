@@ -8,7 +8,7 @@ using DAL.Entities;
 
 namespace DAL.EF
 {
-    public class BlackStorkDbInitializer : DropCreateDatabaseIfModelChanges<BlackStorkContext>
+    public class BlackStorkDbInitializer : DropCreateDatabaseAlways<BlackStorkContext>
     {
         protected override void Seed(BlackStorkContext context)
         {
