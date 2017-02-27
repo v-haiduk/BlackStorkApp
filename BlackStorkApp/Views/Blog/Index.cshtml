@@ -4,14 +4,14 @@
 }
 <h2>Blog</h2>
 
-@foreach (BlackStorkApp.Models.TopicModel topic in Model)
+@foreach (BlackStorkApp.Models.TopicModel currentTopic in Model)
 {
     <div class="row">
-        <p>@topic.Header</p>
-        <p>@topic.Description</p>
-        <p>@topic.DateOfCreate</p>
-        <form action="Blog/FullTextNews" method="post">
-            <input type="hidden" name="id" value="@topic.TopicId"/>
+        <p>@currentTopic.Header</p>
+        <p>@currentTopic.Description</p>
+        <p>@currentTopic.DateOfCreate</p>
+        <form action="Blog/GetDescriptionOfNews" method="post">
+            <input type="hidden" name="id" value="@currentTopic.TopicId"/>
             <input type="submit" value="read more"/>
         </form>
     </div>

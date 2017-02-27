@@ -1,0 +1,21 @@
+﻿@model IEnumerable<BlackStorkApp.Models.ProductModel>
+@{
+    ViewBag.Title = "Catalog";
+}
+<h2>Catalog</h2>
+
+@foreach (BlackStorkApp.Models.ProductModel currentProduct in Model)
+{
+    <div class="row">
+        <p>@currentProduct.Name</p>
+        <p>@currentProduct.Description</p>
+        <p>@currentProduct.PathForMainPhoto</p>
+        <p>@currentProduct.PathForFolderWithPhotos</p>
+
+        <form action="Catalog/Product" method="post">
+            <input type="hidden" name="id" value="@currentProduct.ProductId"/>
+            <input type="submit" value="read more"/>
+        </form>
+
+    </div>
+}

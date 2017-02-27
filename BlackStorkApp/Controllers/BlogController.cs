@@ -40,9 +40,9 @@ namespace BlackStorkApp.Controllers
         /// <param name="id">The id of a selected news</param>
         /// <returns>The view with full text of a news</returns>
         [HttpPost]
-        public ActionResult FullTextNews(int id)
+        public ActionResult GetDescriptionOfNews(int id)
         {
-            TopicDTO topicDTO = topicService.GetElement(2);
+            TopicDTO topicDTO = topicService.GetElement(id);
             Mapper.Initialize(config => config.CreateMap<TopicDTO, TopicModel>());
             var topicForDisplay = Mapper.Map<TopicDTO, TopicModel>(topicDTO);
 
