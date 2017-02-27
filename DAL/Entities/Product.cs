@@ -9,6 +9,6 @@ namespace DAL.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public string PathForMainPhoto { get; set; }
-        //add fields for other photo, which will be in slider
+        public string PathForFolderWithPhotos { get; set; }
     }
 }

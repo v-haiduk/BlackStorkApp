@@ -49,7 +49,9 @@ namespace BLL.Services
             {
                 Header = element.Header,
                 Description = element.Description,
-                DateOfCreate = element.DateOfCreate
+                DateOfCreate = element.DateOfCreate,
+                PathForMainPhoto = element.PathForMainPhoto,
+                PathForFolderWithPhotos = element.PathForFolderWithPhotos
             };
 
             uow.Topics.Create(topic);
@@ -62,7 +64,9 @@ namespace BLL.Services
             {
                 Header = element.Header,
                 Description = element.Description,
-                DateOfCreate = element.DateOfCreate
+                DateOfCreate = element.DateOfCreate,
+                PathForMainPhoto = element.PathForMainPhoto,
+                PathForFolderWithPhotos = element.PathForFolderWithPhotos
             };
 
             uow.Topics.Update(topic);

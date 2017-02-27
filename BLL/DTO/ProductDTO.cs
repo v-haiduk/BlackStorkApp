@@ -8,7 +8,7 @@ namespace BLL.DTO
         public int ProductId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string pathForMainPhoto { get; set; }
-        //add fields for other photo, which will be in slider
+        public string PathForMainPhoto { get; set; }
+        public string PathForFolderWithPhotos { get; set; }
     }
 }

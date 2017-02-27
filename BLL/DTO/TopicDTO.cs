@@ -9,5 +9,7 @@ namespace BLL.DTO
         public string Header { get; set; }
         public string Description { get; set; }
         public DateTime DateOfCreate { get; set; }
+        public string PathForMainPhoto { get; set; }
+        public string PathForFolderWithPhotos { get; set; }
     }
 }

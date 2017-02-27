@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "Blog";
 }
-
 <h2>Blog</h2>
 
 @foreach (BlackStorkApp.Models.TopicModel topic in Model)
@@ -11,6 +10,10 @@
         <p>@topic.Header</p>
         <p>@topic.Description</p>
         <p>@topic.DateOfCreate</p>
+        <form action="Blog/FullTextNews" method="post">
+            <input type="hidden" name="id" value="@topic.TopicId"/>
+            <input type="submit" value="read more"/>
+        </form>
     </div>
 }
 

@@ -50,7 +50,8 @@ namespace BLL.Services
             {
                 Name = element.Name,
                 Description = element.Description,
-                PathForMainPhoto = element.pathForMainPhoto
+                PathForMainPhoto = element.PathForMainPhoto,
+                PathForFolderWithPhotos = element.PathForFolderWithPhotos
             };
 
             uow.Products.Create(product);
@@ -63,7 +64,8 @@ namespace BLL.Services
             {
                 Name = element.Name,
                 Description = element.Description,
-                PathForMainPhoto = element.pathForMainPhoto
+                PathForMainPhoto = element.PathForMainPhoto,
+                PathForFolderWithPhotos = element.PathForFolderWithPhotos
             };
 
             uow.Products.Update(product);

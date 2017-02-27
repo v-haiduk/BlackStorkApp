@@ -20,6 +20,10 @@ namespace BlackStorkApp.Controllers
             topicService = service;
         }
 
+        /// <summary>
+        /// The method shows all news in the blog
+        /// </summary>
+        /// <returns>The views with list of news</returns>
         public ActionResult Index()
         {
             IEnumerable<TopicDTO> topicDTOs = topicService.GetAllElements();
@@ -28,6 +32,23 @@ namespace BlackStorkApp.Controllers
 
             return View(topicsForDisplay);
         }
+
+
+        /// <summary>
+        /// The method shows a full text of news, which selected  a user
+        /// </summary>
+        /// <param name="id">The id of a selected news</param>
+        /// <returns>The view with full text of a news</returns>
+        [HttpPost]
+        public ActionResult FullTextNews(int id)
+        {
+            TopicDTO topicDTO = topicService.GetElement(2);
+            Mapper.Initialize(config => config.CreateMap<TopicDTO, TopicModel>());
+            var topicForDisplay = Mapper.Map<TopicDTO, TopicModel>(topicDTO);
+
+            return View("News",topicForDisplay);
+        }
+
 
         protected override void Dispose(bool disposing)
         {
