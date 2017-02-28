@@ -39,9 +39,9 @@ namespace BlackStorkApp.Controllers
 
 
         /// <summary>
-        /// The method replys information about new product, which added the admin 
+        /// The method sends an information about new product, which added the admin 
         /// </summary>
-        /// <param name="product">The new product, which will be add in DB</param>
+        /// <param name="product">The new product, which will be add in a DB</param>
         [HttpPost]
         public ActionResult CreateOfProduct(ProductModel product)
         {
@@ -64,15 +64,63 @@ namespace BlackStorkApp.Controllers
 
 
         /// <summary>
-        /// The method replys information about new topuc, which added the admin 
+        /// The method sends an information about new topic, which added the admin 
         /// </summary>
-        /// <param name="topic">The new topic, which will be add in DB</param>
+        /// <param name="topic">The new topic, which will be add in a DB</param>
         /// <returns></returns>
         public ActionResult CreateOfTopc(TopicModel topic)
         {
             Mapper.Initialize(configuration => configuration.CreateMap<TopicModel, TopicDTO>());
             var newTopic = Mapper.Map<TopicModel, TopicDTO>(topic);
             topicService.CreateElement(newTopic);
+
+            return RedirectToAction("Index");
+        }
+
+
+        /// <summary>
+        /// The method returns the view with forms for edit topic
+        /// </summary>
+        /// <param name="id">The if of topic,which will be edit</param>
+        [HttpPost]
+        public ActionResult EditOfTopic(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            var topicDTOForEdit = topicService.GetElement(id);
+            if (topicDTOForEdit != null)
+            {
+                return HttpNotFound();
+            }
+
+            Mapper.Initialize(configuration => configuration.CreateMap<TopicDTO, TopicModel>());
+            var topicModelForEdit = Mapper.Map<TopicDTO, TopicModel>(topicDTOForEdit);
+            if (topicModelForEdit != null)
+            {
+                return View(topicModelForEdit);
+            }
+           
+            return HttpNotFound();
+        }
+
+
+        /// <summary>
+        /// The method sends an information about new topic, which added the admin 
+        /// </summary>
+        /// <param name="topic">The new topic, which will be add in a DB</param>
+        [HttpPost]
+        public ActionResult EditOfTopic(TopicModel topicModel)
+        {
+            if (topicModel == null)
+            {
+                HttpNotFound();
+            }
+            Mapper.Initialize(configuration => configuration.CreateMap<TopicModel, TopicDTO>());
+            var topicDTOForEdit = Mapper.Map<TopicModel, TopicDTO>(topicModel);
+            topicService.UpdateElement(topicDTOForEdit);
 
             return RedirectToAction("Index");
         }
