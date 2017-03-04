@@ -1,0 +1,15 @@
+﻿@model BlackStorkApp.Models.ProductModel
+@{
+    ViewBag.Title = "EditOfProduct";
+}
+
+<h2>EditOfProduct</h2>
+<form method="post">
+    <input type="hidden" name="ProductId" value="@Model.ProductId"/>
+    <input type="text" name="Name" value="@Model.Name"/>
+    <input type="text" name="Description" value="@Model.Description" />
+    <input type="hidden" name="PathForMainPhoto" value="@Model.PathForMainPhoto"/>
+    <input type="hidden" name="PathForFolderWithPhotos" value="@Model.PathForFolderWithPhotos"/>
+    <input type="submit" value="update the product"/>
+</form>
+

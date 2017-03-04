@@ -5,3 +5,14 @@
 
 <h2>CreateOfProdut</h2>
 
+<form method="post" role="form">
+    <input type="hidden" name="ProductId" />
+    <input type="text" name="Name" placeholder="header" />
+    <input type="text" name="Description" placeholder="description" />
+    <input type="hidden" name="DateOfCreate" value="@DateTime.Now" />
+    <input type="text" name="PathForMainPhoto" placeholder="main photo" />
+    <input type="text" name="PathForFolderWithPhotos" placeholder="other photo" />
+
+    <input type="submit" vale="save" />
+</form>
+

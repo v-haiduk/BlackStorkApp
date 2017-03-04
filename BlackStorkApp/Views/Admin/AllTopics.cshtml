@@ -1,0 +1,24 @@
+﻿@model IEnumerable<BlackStorkApp.Models.TopicModel>
+@{
+    ViewBag.Title = "AllTopics";
+}
+
+<h2>AllTopics</h2>
+<a href="CreateOfTopic" class="btn btn-info">Create a topic</a>
+@foreach (BlackStorkApp.Models.TopicModel currentTopic in Model)
+{
+    <p>@currentTopic.TopicId | @currentTopic.Header | @currentTopic.DateOfCreate</p>
+    <p>@currentTopic.Description</p>
+    <p>@currentTopic.PathForMainPhoto</p>
+    <p>@currentTopic.PathForFolderWithPhotos</p>
+    <form method="get">
+        <a href="/Admin/EditOfTopic/@currentTopic.TopicId" class="btn btn-primary">Edit</a>
+        <!----<input type="hidden" name="id" value="currentTopic.TopicId"/>-->
+        <!----<input type="submit" value="edit"/>-->
+    </form>
+
+    <form method="post" action="DeleteOfTopic">
+        <input type="hidden" name="id" value="@currentTopic.TopicId"/>
+        <input type="submit" value="delete"/>
+    </form>
+}

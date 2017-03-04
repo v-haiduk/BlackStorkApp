@@ -1,7 +1,16 @@
-﻿
+﻿@model BlackStorkApp.Models.TopicModel
 @{
     ViewBag.Title = "EditOfTopic";
 }
 
 <h2>EditOfTopic</h2>
+<form method="post">
+    <input type="hidden" name="TopicId" value="@Model.TopicId"/>
+    <input type="text" name="Header" value="@Model.Header"/>
+    <input type="text" name="Description" value="@Model.Description"/>
+    <input type="hidden" name="DateOfCreate" value="@Model.DateOfCreate"/>
+    <input type="hidden" name="PathForMainPhoto" value="@Model.PathForMainPhoto"/>
+    <input type="hidden" name="PathForFolderWithPhotos" value="@Model.PathForFolderWithPhotos"/>
+    <input type="submit" value="update"/>
+</form>
 

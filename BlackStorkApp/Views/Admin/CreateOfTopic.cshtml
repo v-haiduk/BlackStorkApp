@@ -5,3 +5,14 @@
 
 <h2>CreateOfTopic</h2>
 
+<form method="post" role="form">
+    <input type="hidden" name="TopicId" />
+    <input type="text" name="Header" placeholder="header"/>
+    <input type="text" name="Description" placeholder="description"/>
+    <input type="hidden" name="DateOfCreate" value="@DateTime.Now" />
+    <input type="text" name="PathForMainPhoto" placeholder="main photo"/>
+    <input type="text" name="PathForFolderWithPhotos" placeholder="other photo"/>
+      
+    <input type="submit" vale="save"/>
+</form>
+

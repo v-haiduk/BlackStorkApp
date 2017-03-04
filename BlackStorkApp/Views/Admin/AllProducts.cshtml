@@ -1,0 +1,24 @@
+﻿@model IEnumerable<BlackStorkApp.Models.ProductModel>
+@{
+    ViewBag.Title = "AllProducts";
+}
+
+<h2>AllProducts</h2>
+<a href="CreateOfProduct" class="btn btn-info">Create a topic</a>
+@foreach (BlackStorkApp.Models.ProductModel currentProduct in Model)
+{
+    <p>@currentProduct.ProductId | @currentProduct.Name </p>
+    <p>@currentProduct.Description</p>
+    <p>@currentProduct.PathForMainPhoto</p>
+    <p>@currentProduct.PathForFolderWithPhotos</p>
+    <form method="get">
+        <a href="EditOfProduct/@currentProduct.ProductId" class="btn btn-primary">Edit</a>
+    </form>
+
+    <form method="post" action="DeleteOfProduct">
+        <input type="hidden" name="id" value="@currentProduct.ProductId"/>
+        <input type="submit" value="delete"/>
+    </form>
+
+
+}

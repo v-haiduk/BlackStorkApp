@@ -62,6 +62,7 @@ namespace BLL.Services
         {
             Topic topic = new Topic
             {
+                TopicId = element.TopicId,
                 Header = element.Header,
                 Description = element.Description,
                 DateOfCreate = element.DateOfCreate,

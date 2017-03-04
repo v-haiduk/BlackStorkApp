@@ -48,6 +48,7 @@ namespace BLL.Services
         {
             Product product = new Product
             {
+                //add id
                 Name = element.Name,
                 Description = element.Description,
                 PathForMainPhoto = element.PathForMainPhoto,
@@ -62,6 +63,7 @@ namespace BLL.Services
         {
             Product product = new Product
             {
+                ProductId = element.ProductId,
                 Name = element.Name,
                 Description = element.Description,
                 PathForMainPhoto = element.PathForMainPhoto,

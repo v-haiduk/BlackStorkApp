@@ -22,6 +22,7 @@ namespace BlackStorkApp.Controllers
             topicService = tService;
         }
 
+
         public ActionResult Index()
         {
             return View();
@@ -54,7 +55,77 @@ namespace BlackStorkApp.Controllers
 
 
         /// <summary>
-        /// The method returns the view with forms for add new topic
+        /// The method returns the view with forms, which contain an old information for edit product
+        /// </summary>
+        /// <param name="id">The product,which will be edit</param>
+        [HttpGet]
+        public ActionResult EditOfProduct(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            var productDTOForEdit = productService.GetElement(id);
+            Mapper.Initialize(configuration => configuration.CreateMap<ProductDTO, ProductModel>());
+            var productForEdit = Mapper.Map<ProductDTO, ProductModel>(productDTOForEdit);
+            
+            if (productForEdit != null)
+            {
+                return View(productForEdit);
+            }
+
+            return HttpNotFound();
+        }
+
+
+        /// <summary>
+        /// The method sends an update about product, which added the admin 
+        /// </summary>
+        /// <param name="productModel">The product, which edited an administrator</param>
+        [HttpPost]
+        public ActionResult EditOfProduct(ProductModel productModel)
+        {
+            if (productModel == null)
+            {
+                return HttpNotFound();
+            }
+            Mapper.Initialize(configuration => configuration.CreateMap<ProductModel, ProductDTO>());
+            var productForEdit = Mapper.Map<ProductModel, ProductDTO>(productModel);
+            productService.UpdateElement(productForEdit);
+
+            return RedirectToAction("Index");
+        }
+
+
+        /// <summary>
+        /// The method returns the view with list of all products
+        /// </summary>
+        public ActionResult GetAllProducts()
+        {
+            IEnumerable<ProductDTO> productDTOs = productService.GetAllElements();
+            Mapper.Initialize(configuration => configuration.CreateMap<ProductDTO, ProductModel>());
+            var allProducts = Mapper.Map<IEnumerable<ProductDTO>, List<ProductModel>>(productDTOs);
+
+            return View("AllProducts", allProducts);
+        }
+
+
+        [HttpPost]
+        public ActionResult DeleteOfProduct(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            productService.DeleteElement(id.Value);
+
+            return RedirectToAction("Index");
+        }
+
+
+        /// <summary>
+        /// The method returns the view with empty forms for add new topic
         /// </summary>
         [HttpGet]
         public ActionResult CreateOfTopic()
@@ -67,8 +138,8 @@ namespace BlackStorkApp.Controllers
         /// The method sends an information about new topic, which added the admin 
         /// </summary>
         /// <param name="topic">The new topic, which will be add in a DB</param>
-        /// <returns></returns>
-        public ActionResult CreateOfTopc(TopicModel topic)
+        [HttpPost]
+        public ActionResult CreateOfTopic(TopicModel topic)
         {
             Mapper.Initialize(configuration => configuration.CreateMap<TopicModel, TopicDTO>());
             var newTopic = Mapper.Map<TopicModel, TopicDTO>(topic);
@@ -79,10 +150,10 @@ namespace BlackStorkApp.Controllers
 
 
         /// <summary>
-        /// The method returns the view with forms for edit topic
+        /// The method returns the view with forms, which contain an old information for edit topic
         /// </summary>
-        /// <param name="id">The if of topic,which will be edit</param>
-        [HttpPost]
+        /// <param name="id">The topic,which will be edit</param>
+        [HttpGet]
         public ActionResult EditOfTopic(int? id)
         {
             if (id == null)
@@ -91,9 +162,9 @@ namespace BlackStorkApp.Controllers
             }
 
             var topicDTOForEdit = topicService.GetElement(id);
-            if (topicDTOForEdit != null)
+            if (topicDTOForEdit == null)
             {
-                return HttpNotFound();
+                return HttpNotFound("first exception");
             }
 
             Mapper.Initialize(configuration => configuration.CreateMap<TopicDTO, TopicModel>());
@@ -102,21 +173,21 @@ namespace BlackStorkApp.Controllers
             {
                 return View(topicModelForEdit);
             }
-           
-            return HttpNotFound();
+
+            return HttpNotFound("second exception");
         }
 
 
         /// <summary>
-        /// The method sends an information about new topic, which added the admin 
+        /// The method sends an update about topic, which added the admin 
         /// </summary>
-        /// <param name="topic">The new topic, which will be add in a DB</param>
+        /// <param name="topicModel">The topic, which edited an administrator</param>
         [HttpPost]
         public ActionResult EditOfTopic(TopicModel topicModel)
         {
             if (topicModel == null)
             {
-                HttpNotFound();
+                return HttpNotFound();
             }
             Mapper.Initialize(configuration => configuration.CreateMap<TopicModel, TopicDTO>());
             var topicDTOForEdit = Mapper.Map<TopicModel, TopicDTO>(topicModel);
@@ -124,5 +195,36 @@ namespace BlackStorkApp.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+        /// <summary>
+        /// The method returns the view with list of all topics
+        /// </summary>
+        public ActionResult GetAllTopics()
+        {
+            IEnumerable<TopicDTO> topicDTOs = topicService.GetAllElements();
+            Mapper.Initialize(configuration => configuration.CreateMap<TopicDTO, TopicModel>());
+            var allTopics = Mapper.Map<IEnumerable<TopicDTO>, List<TopicModel>>(topicDTOs);
+
+            return View("AllTopics", allTopics);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult DeleteOfTopic(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            topicService.DeleteElement(id.Value);
+
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }
