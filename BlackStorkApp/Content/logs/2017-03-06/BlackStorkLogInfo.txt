@@ -1,0 +1,2 @@
+2017-03-06 01:37:06.9513|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-03-06 14:30:59.9066|INFO|BlackStorkApp.MvcApplication|Application End

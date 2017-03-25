@@ -111,6 +111,10 @@ namespace BlackStorkApp.Controllers
         }
 
 
+        /// <summary>
+        /// The method deletes a product, which selected the administrator
+        /// </summary>
+        /// <param name="id">The id of product, which will be add</param>
         [HttpPost]
         public ActionResult DeleteOfProduct(int? id)
         {
@@ -210,7 +214,10 @@ namespace BlackStorkApp.Controllers
         }
 
 
-
+        /// <summary>
+        /// The method deletes a topic, which selected the administrator
+        /// </summary>
+        /// <param name="id">The id of topic, which will be add</param>
         [HttpPost]
         public ActionResult DeleteOfTopic(int? id)
         {

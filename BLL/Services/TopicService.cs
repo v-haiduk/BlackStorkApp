@@ -81,7 +81,7 @@ namespace BLL.Services
                 throw new ValidationException("", "");
             }
 
-            uow.Products.Delete(id.Value);
+            uow.Topics.Delete(id.Value);
             uow.SaveChanges();
         }
 

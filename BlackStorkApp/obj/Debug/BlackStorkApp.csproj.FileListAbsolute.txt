@@ -68,3 +68,5 @@ c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\Bla
 c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\BlackStorkApp\obj\Debug\BlackStorkApp.csprojResolveAssemblyReference.cache
 c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\BlackStorkApp\obj\Debug\BlackStorkApp.dll
 c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\BlackStorkApp\obj\Debug\BlackStorkApp.pdb
+C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\NLog.dll
+C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\NLog.xml
