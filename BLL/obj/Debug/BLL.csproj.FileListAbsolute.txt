@@ -14,3 +14,4 @@ c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\BLL
 c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\BLL\obj\Debug\BLL.dll
 c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\BLL\obj\Debug\BLL.pdb
+C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BLL\obj\Debug\BLL.csproj.ResolveComReference.cache

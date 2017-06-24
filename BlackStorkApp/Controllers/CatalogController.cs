@@ -21,16 +21,43 @@ namespace BlackStorkApp.Controllers
         }
 
         /// <summary>
-        /// The method shows all products
+        /// The method shows all products and adds a pagination
         /// </summary>
         /// <returns>The views with list of products</returns>
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             IEnumerable<ProductDTO> productDTOs = productService.GetAllElements();
             Mapper.Initialize(configuratin => configuratin.CreateMap<ProductDTO, ProductModel>());
             var productsForDisplay = Mapper.Map<IEnumerable<ProductDTO>, List<ProductModel>>(productDTOs);
 
-            return View(productsForDisplay);
+            PaginationProductsModel productsWithPagination = CreatePaginationForProducts(productsForDisplay, page);
+
+            return View(productsWithPagination);
+        }
+
+        /// <summary>
+        /// The method adds the pagination for collection of products
+        /// </summary>
+        /// <param name="products">The list of product without pagination</param>
+        /// <param name="page">The number of current page</param>
+        private PaginationProductsModel CreatePaginationForProducts(IEnumerable<ProductModel> products, int page)
+        {
+            int amountItemOnPage = 10;
+            IEnumerable<ProductModel> productsOnPage = products.Skip((page - 1) * amountItemOnPage).Take(amountItemOnPage);
+            PageModel pageModel = new PageModel
+            {
+                PageNumber = page,
+                PageCapacity = amountItemOnPage,
+                TotalItems = products.Count()
+            };
+
+            PaginationProductsModel productsOnPages = new PaginationProductsModel
+            {
+                Page = pageModel,
+                Products = productsOnPage
+            };
+
+            return productsOnPages;
         }
 
 
@@ -47,6 +74,13 @@ namespace BlackStorkApp.Controllers
             var productForDisplay = Mapper.Map<ProductDTO, ProductModel>(productDTO);
 
             return View("Product", productForDisplay);
+        }
+
+        public JsonResult Search(string name)
+        {
+            var resultOfSearch = productService.FindElement(product => product.Name.Contains(name)).ToList();
+
+            return Json(resultOfSearch, JsonRequestBehavior.AllowGet);
         }
 
 

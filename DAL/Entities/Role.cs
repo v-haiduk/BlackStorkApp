@@ -3,7 +3,7 @@
 namespace DAL.Entities
 {
     /// <summary>
-    /// Class for list with roles of users
+    /// The model for list with roles of users
     /// </summary>
     public class Role
     {

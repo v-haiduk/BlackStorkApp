@@ -24,13 +24,42 @@ namespace BlackStorkApp.Controllers
         /// The method shows all news in the blog
         /// </summary>
         /// <returns>The views with list of news</returns>
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             IEnumerable<TopicDTO> topicDTOs = topicService.GetAllElements();
             Mapper.Initialize(configuration => configuration.CreateMap<TopicDTO, TopicModel>());
             var topicsForDisplay = Mapper.Map<IEnumerable<TopicDTO>, List<TopicModel>>(topicDTOs);
 
-            return View(topicsForDisplay);
+            PaginationTopicsModel topicsWithPagination = CreatePaginationForTopics(topicsForDisplay, page);
+
+            return View(topicsWithPagination);
+        }
+
+        /// <summary>
+        /// The method adds the pagination for collection of topics
+        /// </summary>
+        /// <param name="products">The list of topics without pagination</param>
+        /// <param name="page">The number of current page</param>
+        private PaginationTopicsModel CreatePaginationForTopics(IEnumerable<TopicModel> topics, int page)
+        {
+            int amountOfItemOnPage = 10;
+            IEnumerable<TopicModel> topicsOnPage = topics.Skip((page - 1) * amountOfItemOnPage).Take(amountOfItemOnPage);
+
+            PageModel pageModel = new PageModel
+            {
+                PageNumber = page,
+                PageCapacity = amountOfItemOnPage,
+                TotalItems = topics.Count()
+            };
+
+            PaginationTopicsModel topicsOnPages = new PaginationTopicsModel
+            {
+                Page = pageModel,
+                Topics = topicsOnPage
+            };
+
+            return topicsOnPages;
+
         }
 
 

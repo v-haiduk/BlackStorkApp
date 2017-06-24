@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width"/>
+    <title>Black stork</title>
+    @Styles.Render("~/Content/main/main.css")
+    @Styles.Render("~/Content/default-domainless.css")
+</head>
+
+<body class="stretched">
+    <div id="wrapper" class="clearfix">
+        
+        @Html.Partial("MainPage/Header")
+
+        @RenderBody()
+
+        <footer id="footer" class="dark">
+            @Html.Partial("MainPage/Footer")
+        </footer>
+    </div><!-- #wrapper end -->
+</body>
+
+    @Scripts.Render("~/Scripts/main/jquery.js")
+    @Scripts.Render("~/Scripts/main/functions.js")
+</html>

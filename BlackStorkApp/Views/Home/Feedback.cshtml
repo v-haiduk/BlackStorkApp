@@ -1,0 +1,40 @@
+﻿@model BlackStorkApp.Models.FeedbackModel
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+    ViewBag.Title = "Обратная связь";
+}
+<section id="page-title">
+    <div class="container clearfix">
+        <h1>Обратная связь</h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li class="active">Widgets</li>
+        </ol>
+    </div>
+</section><!-- #page-title end -->
+
+<section id="content">
+    <div class="content-wrap">
+        <div class="container clear-bottommargin clearfix">
+            <div class="row clearfix">
+                <div class="col-md-8 bottommargin">
+                    <div id="q-contact" class="widget quick-contact-widget clearfix">
+                        <h4 class="highlight-me">Свяжитесь с нами</h4>
+                        <div class="quick-contact-form-result"></div>
+
+                        <form id="quick-contact-form" name="quick-contact-form" role="form" method="post"
+                              class="quick-contact-form nobottommargin">
+                            @Html.TextBoxFor(model => model.UserName, new {@class = "required sm-form-control input-block-level", placeholder = "Имя" } )
+                            @Html.TextBoxFor(model => model.Email, new { @class = "required sm-form-control input-block-level", placeholder = "E-mail" })
+                            @Html.TextAreaFor(model => model.MessageText, 4, 30, new { @class = "required sm-form-control input-block-level short-textarea", placeholder = "Текст сообщения" })
+                            <button type="submit" id="quick-contact-form-submit" name="quick-contact-form-submit"
+                                    class="button button-small button-3d nomargin" value="submit">Отправить сообщение</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- #content end -->

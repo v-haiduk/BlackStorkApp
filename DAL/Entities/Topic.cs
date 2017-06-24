@@ -3,6 +3,9 @@
 
 namespace DAL.Entities
 {
+    /// <summary>
+    /// The model of topic for storage in the DB.
+    /// </summary>
     public class Topic
     {
         public int TopicId { get; set; }

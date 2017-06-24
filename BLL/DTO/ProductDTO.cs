@@ -3,6 +3,10 @@ using DAL.Entities;
 
 namespace BLL.DTO
 {
+    /// <summary>
+    /// The DTO (data transfer object) is intermediate class 
+    /// for transfer of data about product between layers
+    /// </summary>
     public class ProductDTO
     {
         public int ProductId { get; set; }

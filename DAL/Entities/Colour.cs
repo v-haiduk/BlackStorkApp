@@ -3,7 +3,7 @@
 namespace DAL.Entities
 {
     /// <summary>
-    /// Class for list with colours of products (equipments)
+    /// The model for list with colours of products (equipments)
     /// </summary>
     public class Colour
     {

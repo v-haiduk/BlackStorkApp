@@ -28,6 +28,7 @@ namespace BlackStorkApp.Util
         {
             kernel.Bind<IMainService<TopicDTO>>().To<TopicService>();
             kernel.Bind<IMainService<ProductDTO>>().To<ProductService>();
+            kernel.Bind<IUserService>().To<UserService>();
 
             //kernel.Bind<IRepository<Product>>().To<>();
         }

@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
+using System.Linq.Expressions;
 using DAL.EF;
 using DAL.Entities;
 using DAL.Interfaces;
 
 namespace DAL.Repositories
 {
+    /// <summary>
+    /// The implementation of IRepository
+    /// </summary>
     class UserAccountRepository : IRepository<UserAccount>
     {
         private BlackStorkContext db;
@@ -27,9 +31,9 @@ namespace DAL.Repositories
             return db.UserAccounts.Find(id);
         }
 
-        public IEnumerable<UserAccount> FindElement(Func<UserAccount, bool> predicate)
+        public IEnumerable<UserAccount> FindElement(Expression<Func<UserAccount, bool>> predicate)
         {
-            return db.UserAccounts.Where(predicate).ToList();
+            return db.UserAccounts.Where(predicate).Select(i => i);
         }
 
         public void Create(UserAccount item)

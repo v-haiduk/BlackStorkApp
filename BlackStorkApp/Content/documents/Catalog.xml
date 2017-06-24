@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+  <Product>
+    <ProductID>1</ProductID>
+    <Name>Шлейка x-back</Name>
+    <Description>Ipsum dolor sit amet dolor sit amet dolor sit amet dolor sit amet</Description>
+  </Product>
+  <Product>
+    <ProductID>2</ProductID>
+    <Name>Шлейка h-back</Name>
+    <Description>Ipsum dolor sit amet</Description>
+  </Product>
+  <Product>
+    <ProductID>3</ProductID>
+    <Name>Нарты спортивные</Name>
+    <Description>Ipsum dolor sit amet</Description>
+  </Product>
+  <Product>
+    <ProductID>4</ProductID>
+    <Name>Сумка для снаряжения</Name>
+    <Description>Ipsum dolor sit amet dolor sit amet dolor sit amet dolor sit amet dolor sit amet </Description>
+  </Product>
+  <Product>
+    <ProductID>5</ProductID>
+    <Name>Дождевик</Name>
+    <Description>Ipsum dolor sit amet</Description>
+  </Product>
+  <Product>
+    <ProductID>6</ProductID>
+    <Name>Попона</Name>
+    <Description>Ipsum dolor sit amet</Description>
+  </Product>
+  <Product>
+    <ProductID>7</ProductID>
+    <Name>Тапочки</Name>
+    <Description>Ipsum dolor sit amet dolor sit amet dolor sit ametdolor sit ametdolor sit ametdolor sit ametdolor sit ametdolor sit amet</Description>
+  </Product>
+</Catalog>

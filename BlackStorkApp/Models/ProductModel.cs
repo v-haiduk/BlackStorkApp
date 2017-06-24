@@ -12,5 +12,6 @@ namespace BlackStorkApp.Models
         public string Description { get; set; }
         public string PathForMainPhoto { get; set; }
         public string PathForFolderWithPhotos { get; set; }
+        //public HttpPostedFileBase Photo { get; set; }
     }
 }

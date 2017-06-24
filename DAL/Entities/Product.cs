@@ -3,6 +3,9 @@
 
 namespace DAL.Entities
 {
+    /// <summary>
+    /// The model of product for storage in the DB.
+    /// </summary>
     public class Product
     {
         public int ProductId { get; set; }

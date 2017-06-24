@@ -3,7 +3,7 @@
 namespace BLL.Infrastructure
 {
     /// <summary>
-    /// Class generates the message with error, which will see users
+    /// The class generates the message with error, which will see users
     /// </summary>
     public class ValidationException : Exception
     {

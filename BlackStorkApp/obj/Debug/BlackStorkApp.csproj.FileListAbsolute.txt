@@ -70,3 +70,7 @@ c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\Bla
 c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\BlackStorkApp\obj\Debug\BlackStorkApp.pdb
 C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\NLog.dll
 C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\NLog.xml
+C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\PagedList.dll
+C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\PagedList.Mvc.dll
+C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\PagedList.xml
+C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\PagedList.Mvc.xml

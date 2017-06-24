@@ -8,6 +8,9 @@ using BLL.Infrastructure;
 using BLL.Interfaces;
 using BlackStorkApp.Models;
 using AutoMapper;
+using System.Xml.Serialization;
+using PagedList.Mvc;
+using PagedList;
 
 namespace BlackStorkApp.Controllers
 {
@@ -22,12 +25,11 @@ namespace BlackStorkApp.Controllers
             topicService = tService;
         }
 
-
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
-
 
         /// <summary>
         /// The method returns the view with forms for add new product
@@ -43,14 +45,30 @@ namespace BlackStorkApp.Controllers
         /// The method sends an information about new product, which added the admin 
         /// </summary>
         /// <param name="product">The new product, which will be add in a DB</param>
+        /// <param name="photo">The new main photo uploaded by user</param>
         [HttpPost]
-        public ActionResult CreateOfProduct(ProductModel product)
+        public ActionResult CreateOfProduct(ProductModel product, HttpPostedFileBase photo)
         {
+            product.PathForMainPhoto = Upload(photo);
             Mapper.Initialize(configuration => configuration.CreateMap<ProductModel, ProductDTO>());
             var newProduct = Mapper.Map<ProductModel, ProductDTO>(product);
             productService.CreateElement(newProduct);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("GetAllProducts");
+        }
+
+        /// <summary>
+        /// The method saves the new main photo of product on the server
+        /// </summary>
+        /// <param name="photo">The new photo uploaded by user </param>
+        /// <returns>The path to the photo on the server</returns>
+        public string Upload(HttpPostedFileBase photo)
+        {
+            string fileName = System.IO.Path.GetFileName(photo.FileName);
+            string filePath = Server.MapPath("~/Content/img/" + fileName);
+            photo.SaveAs(filePath);
+
+            return filePath;
         }
 
 
@@ -72,7 +90,7 @@ namespace BlackStorkApp.Controllers
             
             if (productForEdit != null)
             {
-                return View(productForEdit);
+                return View("EditOfProduct",productForEdit);
             }
 
             return HttpNotFound();
@@ -94,20 +112,48 @@ namespace BlackStorkApp.Controllers
             var productForEdit = Mapper.Map<ProductModel, ProductDTO>(productModel);
             productService.UpdateElement(productForEdit);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("GetAllProducts");
         }
 
 
         /// <summary>
-        /// The method returns the view with list of all products
+        /// The method returns the view with list of all products and adds a pagination
         /// </summary>
-        public ActionResult GetAllProducts()
+        public ActionResult GetAllProducts(int page = 1)
         {
             IEnumerable<ProductDTO> productDTOs = productService.GetAllElements();
             Mapper.Initialize(configuration => configuration.CreateMap<ProductDTO, ProductModel>());
             var allProducts = Mapper.Map<IEnumerable<ProductDTO>, List<ProductModel>>(productDTOs);
 
-            return View("AllProducts", allProducts);
+            PaginationProductsModel productsWithPagination = CreatePaginationForProducts(allProducts, page);
+
+            return View("AllProducts", productsWithPagination);
+        }
+
+
+        /// <summary>
+        /// The method adds the pagination for collection of products
+        /// </summary>
+        /// <param name="products">The list of product without pagination</param>
+        /// <param name="page">The number of current page</param>
+        private PaginationProductsModel CreatePaginationForProducts(IEnumerable<ProductModel> products, int page)
+        {
+            int amountItemOnPage = 10;
+            IEnumerable<ProductModel> productsOnPage = products.Skip((page - 1) * amountItemOnPage).Take(amountItemOnPage);
+            PageModel pageModel = new PageModel
+            {
+                PageNumber = page,
+                PageCapacity = amountItemOnPage,
+                TotalItems = products.Count()
+            };
+
+            PaginationProductsModel productsOnPages = new PaginationProductsModel
+            {
+                Page = pageModel,
+                Products = productsOnPage
+            };
+
+            return productsOnPages;
         }
 
 
@@ -124,7 +170,7 @@ namespace BlackStorkApp.Controllers
             }
             productService.DeleteElement(id.Value);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("GetAllProducts");
         }
 
 
@@ -142,14 +188,16 @@ namespace BlackStorkApp.Controllers
         /// The method sends an information about new topic, which added the admin 
         /// </summary>
         /// <param name="topic">The new topic, which will be add in a DB</param>
+        /// <param name="photo">The new main photo uploaded by user</param>
         [HttpPost]
-        public ActionResult CreateOfTopic(TopicModel topic)
+        public ActionResult CreateOfTopic(TopicModel topic, HttpPostedFileBase photo)
         {
+            topic.PathForMainPhoto = Upload(photo);
             Mapper.Initialize(configuration => configuration.CreateMap<TopicModel, TopicDTO>());
             var newTopic = Mapper.Map<TopicModel, TopicDTO>(topic);
             topicService.CreateElement(newTopic);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("GetAllTopics");
         }
 
 
@@ -175,7 +223,7 @@ namespace BlackStorkApp.Controllers
             var topicModelForEdit = Mapper.Map<TopicDTO, TopicModel>(topicDTOForEdit);
             if (topicModelForEdit != null)
             {
-                return View(topicModelForEdit);
+                return View("EditOfTopic",topicModelForEdit);
             }
 
             return HttpNotFound("second exception");
@@ -197,20 +245,49 @@ namespace BlackStorkApp.Controllers
             var topicDTOForEdit = Mapper.Map<TopicModel, TopicDTO>(topicModel);
             topicService.UpdateElement(topicDTOForEdit);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("GetAllTopics");
         }
 
 
         /// <summary>
-        /// The method returns the view with list of all topics
+        /// The method returns the view with list of all topics and adds a pagination
         /// </summary>
-        public ActionResult GetAllTopics()
+        public ActionResult GetAllTopics(int page = 1)
         {
             IEnumerable<TopicDTO> topicDTOs = topicService.GetAllElements();
             Mapper.Initialize(configuration => configuration.CreateMap<TopicDTO, TopicModel>());
             var allTopics = Mapper.Map<IEnumerable<TopicDTO>, List<TopicModel>>(topicDTOs);
 
-            return View("AllTopics", allTopics);
+            PaginationTopicsModel topicsWithPagination = CreatePaginationForTopics(allTopics, page);
+
+            return View("AllTopics", topicsWithPagination);
+        }
+
+        /// <summary>
+        /// The method adds the pagination for collection of topics
+        /// </summary>
+        /// <param name="products">The list of topics without pagination</param>
+        /// <param name="page">The number of current page</param>
+        private PaginationTopicsModel CreatePaginationForTopics(IEnumerable<TopicModel> topics, int page)
+        {
+            int amountOfItemOnPage = 10;
+            IEnumerable<TopicModel> topicsOnPage = topics.Skip((page - 1)*amountOfItemOnPage).Take(amountOfItemOnPage);
+
+            PageModel pageModel = new PageModel
+            {
+                PageNumber = page,
+                PageCapacity = amountOfItemOnPage,
+                TotalItems = topics.Count()
+            };
+
+            PaginationTopicsModel topicsOnPages = new PaginationTopicsModel
+            {
+                Page = pageModel,
+                Topics = topicsOnPage
+            };
+
+            return topicsOnPages;
+
         }
 
 
@@ -228,10 +305,44 @@ namespace BlackStorkApp.Controllers
 
             topicService.DeleteElement(id.Value);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("GetAllTopics");
         }
 
 
+        /// <summary>
+        /// The method creats xml file with all products, save it on server and returns it to client
+        /// </summary>
+        /// <returns>The XML file with all products</returns>
+        public FileResult ExportToXML()
+        {
+            TransferData export = new TransferData();
+
+            string filePath = Server.MapPath("~/Content/documents/Catalog.xml");
+            string fileType = "xml";
+            string fileName = "Catalog.xml";
+
+            export.ExportToXML(productService.GetAllElements(), filePath);       
+
+            return File(filePath, fileType, fileName);
+        }
+
+
+        /// <summary>
+        /// The method creats XLSX file with all products, save it on server and returns it to client
+        /// </summary>
+        /// <returns>The XLSX (MS Exel) file with all products</returns>
+        public FileResult ExportToExel()
+        {
+            TransferData export = new TransferData();
+
+            string filePath = Server.MapPath("~/Content/documents/Catalog.xlsx");
+            string fileType = "xlsx";
+            string fileName = "Catalog.xlsx";
+
+            export.ExportToXLSX(productService.GetAllElements(), filePath);
+
+            return File(filePath, fileType, fileName);
+        }
 
     }
 }

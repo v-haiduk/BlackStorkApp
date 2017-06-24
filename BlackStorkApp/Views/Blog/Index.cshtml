@@ -1,13 +1,27 @@
-﻿@model IEnumerable<BlackStorkApp.Models.TopicModel>
+﻿@model BlackStorkApp.Models.PaginationTopicsModel
+@using BlackStorkApp.Helpers
 @{
-    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+    ViewBag.Title = "Блог";
 }
-<h2>Blog</h2>
 
-@foreach (BlackStorkApp.Models.TopicModel currentTopic in Model)
+<section id="page-title">
+    <div class="container clearfix">
+        <h1>Блог</h1>
+        <span>Наши последние новости</span>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">Widgets</li>
+        </ol>
+    </div>
+</section><!-- #page-title end -->
+
+
+@*@foreach (BlackStorkApp.Models.TopicModel currentTopic in Model.Topics)
 {
     <div class="row">
         <p>@currentTopic.Header</p>
+        <p><img src="@currentTopic.PathForMainPhoto"/></p>
         <p>@currentTopic.Description</p>
         <p>@currentTopic.DateOfCreate</p>
         <form action="Blog/GetDescriptionOfNews" method="post">
@@ -15,5 +29,52 @@
             <input type="submit" value="read more"/>
         </form>
     </div>
-}
+}*@
 
+<div class="btn-group">
+    @Html.PageLinks(Model.Page, x => Url.Action("Index", new {page = x}))
+</div>
+
+
+<section id="content">
+    <div class="content-wrap">
+        <div class="container clearfix">
+            <div class="postcontent nobottommargin clearfix">
+                <div id="posts">
+                    @foreach (BlackStorkApp.Models.TopicModel currentTopic in Model.Topics)
+                    {
+                        <div class="entry clearfix">
+                            <div class="entry-image">
+                                <a href="#" data-lightbox="image">
+                                    <img class="image_fade" src="@currentTopic.PathForMainPhoto" alt="">
+                                </a>
+                            </div>
+                            <div class="entry-title">
+                                <h2><a href="#"> @currentTopic.Header </a>
+                                </h2>
+                            </div>
+                            <ul class="entry-meta clearfix">
+                                <li><i class="icon-calendar3"></i> @currentTopic.DateOfCreate </li>                            
+                            </ul>
+                            <div class="entry-content">
+                                <p>@currentTopic.Description</p>
+                                <a href="#" class="more-link">Read More</a>
+                            </div>
+                        </div>
+                    }
+                </div><!-- #posts end -->
+                <!-- Pagination
+                ============================================= -->
+                <ul class="pager nomargin">
+                    <li class="previous"><a href="#">&larr; Older</a></li>
+                    <li class="next"><a href="#">Newer &rarr;</a></li>
+                </ul><!-- .pager end -->
+            </div><!-- .postcontent end -->
+            <!-- Sidebar
+            ============================================= -->
+            <div class="sidebar nobottommargin col_last clearfix">
+                место для поиска
+            </div><!-- .sidebar end -->
+        </div>
+    </div>
+</section><!-- #content end -->

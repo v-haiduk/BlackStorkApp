@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Black Stork </title>
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/animate.min.css")
+    <!-- Custom styling plus plugins -->
+    @Styles.Render("~/Content/custom.css")
+    @Styles.Render("~/Content/icheck/flat/green.css")
+
+    @Scripts.Render("~/Scripts/jquery.min.js")
+</head>
+
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-12">
+                <div class="col-middle">
+                    <div class="text-center text-center">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+

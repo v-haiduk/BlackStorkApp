@@ -5,6 +5,10 @@ using DAL.Interfaces;
 
 namespace DAL.Repositories
 {
+    /// <summary>
+    /// The class is needed, that all repositories use one context of data.
+    /// Through this class, we will work with DB.
+    /// </summary>
     public class EFUnitOfWork : IUnitOfWork
     {
         private BlackStorkContext db;

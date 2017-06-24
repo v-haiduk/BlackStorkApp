@@ -1,16 +1,55 @@
 ﻿@model BlackStorkApp.Models.TopicModel
 @{
-    ViewBag.Title = "EditOfTopic";
+    ViewBag.Title = "Изменение статьи";
 }
 
-<h2>EditOfTopic</h2>
-<form method="post">
-    <input type="hidden" name="TopicId" value="@Model.TopicId"/>
-    <input type="text" name="Header" value="@Model.Header"/>
-    <input type="text" name="Description" value="@Model.Description"/>
-    <input type="hidden" name="DateOfCreate" value="@Model.DateOfCreate"/>
-    <input type="hidden" name="PathForMainPhoto" value="@Model.PathForMainPhoto"/>
-    <input type="hidden" name="PathForFolderWithPhotos" value="@Model.PathForFolderWithPhotos"/>
-    <input type="submit" value="update"/>
-</form>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Каталог</h3>
+        </div>
+    </div>
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Изменение статьи</h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <div class="col-md-12">
+            <form class="form-horizontal form-label-left" method="post" role="form" id="form">
+                <input type="hidden" name="TopicId" value="@Model.TopicId"/>
+                <input type="hidden" name="DateOfCreate" value="@DateTime.Now"/>
+
+                <div class="form-group">
+                    <label>Заголовок *</label>
+                    <input class="form-control" type="text" name="Header" value="@Model.Header" required/>
+                </div>
+
+                <div class="form-group">
+                    <label>Описание *</label>
+                    <textarea class="resizable_textarea form-control" type="text" name="Description"
+                              rows="10" required>
+                            @Model.Description
+                        </textarea>
+                </div>
+
+                <!----change this region--->
+                <input type="hidden" name="PathForMainPhoto" value="@Model.PathForMainPhoto"/>
+                <input type="hidden" name="PathForFolderWithPhotos" value="@Model.PathForFolderWithPhotos"/>
+
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button class="btn btn-primary" type="submit">Сохранить</button>
+                            <button class="btn btn-success" type="submit" onclick="form().reset">Отменить</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
 

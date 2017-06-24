@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using DAL.Interfaces;
 using DAL.Entities;
 using BLL.DTO;
@@ -9,6 +11,9 @@ using AutoMapper;
 
 namespace BLL.Services
 {
+    /// <summary>
+    /// The class implements the interface IMainService.
+    /// </summary>
     public class ProductService : IMainService<ProductDTO>
     {
         private IUnitOfWork uow { get; set; }
@@ -19,6 +24,9 @@ namespace BLL.Services
             uow = database;
         }
 
+        /// <summary>
+        /// The method gets all products from DB and transfer them on PL
+        /// </summary>
         public IEnumerable<ProductDTO> GetAllElements()
         {
             Mapper.Initialize(configuration => configuration.CreateMap<Product, ProductDTO>());
@@ -26,11 +34,27 @@ namespace BLL.Services
             return Mapper.Map<IEnumerable<Product>, List<ProductDTO>>(uow.Products.GetAllElements());
         }
 
+        public IEnumerable<ProductDTO> FindElement(Expression<Func<ProductDTO, bool>> predicate)
+        {
+            if (predicate == null)
+            {
+                throw new ValidationException("", "");
+            }
+            var predicateCompile = predicate.Compile();
+            var resultOfFind = GetAllElements().Where(predicateCompile);
+
+            return resultOfFind;
+        }
+
+        /// <summary>
+        /// The method gets the product from DB and transfer it on PL
+        /// </summary>
+        /// <param name="id">The id of product</param>
         public ProductDTO GetElement(int? id)
         {
             if (id == null)
             {
-                throw new ValidationException("????????", "");      //нельзя писать, что id не установлен. надо придумать текст
+                throw new ValidationException("Извините, товар не найден", "");
             }
 
             var product = uow.Products.GetElement(id.Value);
@@ -44,6 +68,10 @@ namespace BLL.Services
             return Mapper.Map<Product, ProductDTO>(product);
         }
 
+        /// <summary>
+        /// The method gets the new product from PL and save it in DB
+        /// </summary>
+        /// <param name="item">Thew new product</param>
         public void CreateElement(ProductDTO element)
         {
             Product product = new Product
@@ -59,6 +87,10 @@ namespace BLL.Services
             uow.SaveChanges();
         }
 
+        /// <summary>
+        /// The method gets the updated product from PL and save it in DB
+        /// </summary>
+        /// <param name="item">The updated product</param>
         public void UpdateElement(ProductDTO element)
         {
             Product product = new Product
@@ -74,6 +106,10 @@ namespace BLL.Services
             uow.SaveChanges();
         }
 
+        /// <summary>
+        /// The method gets the id of product from PL and delete it in DB
+        /// </summary>
+        /// <param name="id">The id of product for delete</param>
         public void DeleteElement(int? id)
         {
             if (id == null)

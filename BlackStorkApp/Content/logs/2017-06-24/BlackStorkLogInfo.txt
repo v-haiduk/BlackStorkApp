@@ -1,0 +1,11 @@
+2017-06-24 01:23:10.7202|INFO|BlackStorkApp.MvcApplication|Application End
+2017-06-24 01:40:29.2879|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-06-24 01:41:10.7764|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-06-24 01:53:28.4859|INFO|BlackStorkApp.MvcApplication|Application End
+2017-06-24 02:00:14.2358|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-06-24 02:19:15.6959|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-06-24 02:25:41.0086|INFO|BlackStorkApp.MvcApplication|Application End
+2017-06-24 02:26:17.4546|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-06-24 02:26:55.8403|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-06-24 03:18:13.3182|INFO|BlackStorkApp.MvcApplication|Application End
+2017-06-24 03:18:55.2570|INFO|BlackStorkApp.MvcApplication|Application Start

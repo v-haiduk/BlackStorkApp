@@ -1,24 +1,70 @@
-﻿@model IEnumerable<BlackStorkApp.Models.TopicModel>
+﻿@model BlackStorkApp.Models.PaginationTopicsModel
+@using BlackStorkApp.Helpers
 @{
-    ViewBag.Title = "AllTopics";
+    ViewBag.Title = "Список статей";
 }
 
-<h2>AllTopics</h2>
-<a href="CreateOfTopic" class="btn btn-info">Create a topic</a>
-@foreach (BlackStorkApp.Models.TopicModel currentTopic in Model)
-{
-    <p>@currentTopic.TopicId | @currentTopic.Header | @currentTopic.DateOfCreate</p>
-    <p>@currentTopic.Description</p>
-    <p>@currentTopic.PathForMainPhoto</p>
-    <p>@currentTopic.PathForFolderWithPhotos</p>
-    <form method="get">
-        <a href="/Admin/EditOfTopic/@currentTopic.TopicId" class="btn btn-primary">Edit</a>
-        <!----<input type="hidden" name="id" value="currentTopic.TopicId"/>-->
-        <!----<input type="submit" value="edit"/>-->
-    </form>
-
-    <form method="post" action="DeleteOfTopic">
-        <input type="hidden" name="id" value="@currentTopic.TopicId"/>
-        <input type="submit" value="delete"/>
-    </form>
-}
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Блог</h3>
+        </div>
+    </div>
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Статьи</h2>
+            <div class="clearfix"></div>
+            <p>Перечень всех статей и новостей, содержащихся в блоге</p>
+        </div>
+        <div class="x_content">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <td><b>#</b></td>
+                    <td><b>Название</b></td>
+                    <td><b>Описание</b></td>
+                    <td><b>Дата создания</b></td>
+                    <td><b>Обзор</b></td>
+                    <td><b>Изменить</b></td>
+                    <td><b>Удалить</b></td>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (BlackStorkApp.Models.TopicModel currentTopic in Model.Topics)
+                {
+                    <tr>
+                        <td> @currentTopic.TopicId </td>
+                        <td> @currentTopic.Header </td>
+                        <td> @currentTopic.Description </td>
+                        <td> @currentTopic.DateOfCreate </td>
+                        <td>
+                            <form action="/Blog/GetDescriptionOfNews" method="post">
+                                <input type="hidden" name="id" value="@currentTopic.TopicId"/>
+                                <button type="submit" class="btn btn-link">
+                                    <span class="glyphicon glyphicon-open"></span>
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="/Admin/EditOfTopic/@currentTopic.TopicId" class="btn btn-link">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <form method="post" action="DeleteOfTopic">
+                                <input type="hidden" name="id" value="@currentTopic.TopicId"/>
+                                <button type="submit" class="btn btn-link">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <div class="btn-group">
+                @Html.PageLinks(Model.Page, x => Url.Action("GetAllTopics", new {page = x}))
+            </div>
+        </div>
+    </div>
+</div>

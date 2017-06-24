@@ -13,3 +13,5 @@ c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\DAL
 c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.Migrations.MigrateDB_10.resources
 c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
 C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.Migrations.MigrateDB_with_new_field.resources
+C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.Migrations.updateUsers.resources
+C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.Migrations.updateUsers_2.resources

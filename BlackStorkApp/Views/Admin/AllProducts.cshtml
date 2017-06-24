@@ -1,24 +1,100 @@
-﻿@model IEnumerable<BlackStorkApp.Models.ProductModel>
+﻿@model BlackStorkApp.Models.PaginationProductsModel
+@using BlackStorkApp.Helpers
 @{
-    ViewBag.Title = "AllProducts";
+    ViewBag.Title = "Список товаров";
 }
 
-<h2>AllProducts</h2>
-<a href="CreateOfProduct" class="btn btn-info">Create a topic</a>
-@foreach (BlackStorkApp.Models.ProductModel currentProduct in Model)
-{
-    <p>@currentProduct.ProductId | @currentProduct.Name </p>
-    <p>@currentProduct.Description</p>
-    <p>@currentProduct.PathForMainPhoto</p>
-    <p>@currentProduct.PathForFolderWithPhotos</p>
-    <form method="get">
-        <a href="EditOfProduct/@currentProduct.ProductId" class="btn btn-primary">Edit</a>
-    </form>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Каталог</h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-4 col-sm-4 col-xs-12 form-group pull-right top_search">
+                <div class="btn-group">
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false"> Экспорт <span class="caret"></span> </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/Admin/ExportToXML">в XML</a>
+                            </li>
+                            <li>
+                                <a href="/Admin/ExportToExel">в XLSX</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false"> Импорт <span class="caret"></span> </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">из XML</a>
+                            </li>
+                            <li>
+                                <a href="#">из XLSX</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Товары</h2>
+            <div class="clearfix"></div>
+            <p>Перечень всех товаров, содержащихся в каталоге</p>
+        </div>
+        <div class="x_content">
 
-    <form method="post" action="DeleteOfProduct">
-        <input type="hidden" name="id" value="@currentProduct.ProductId"/>
-        <input type="submit" value="delete"/>
-    </form>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <td><b>#</b></td>
+                    <td><b>Изображение</b></td>
+                    <td><b>Название</b></td>
+                    <td><b>Описание</b></td>
+                    <td><b>Обзор</b></td>
+                    <td><b>Изменить</b></td>
+                    <td><b>Удалить</b></td>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var currentProduct in Model.Products)
+                {
+                    <tr>
+                        <td> @currentProduct.ProductId </td>
+                        <td> <img src="@currentProduct.PathForMainPhoto"/> </td>
+                        <td> @currentProduct.Name </td>
+                        <td> @currentProduct.Description </td>
+                        <td>
+                            <form action="/Catalog/Product" method="post">
+                                <input type="hidden" name="id" value="@currentProduct.ProductId"/>
+                                <button type="submit" class="btn btn-link">
+                                    <span class="glyphicon glyphicon-open"></span>
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="/Admin/EditOfProduct/@currentProduct.ProductId" class="btn btn-link">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <form method="post" action="DeleteOfProduct">
+                                <input type="hidden" name="id" value="@currentProduct.ProductId"/>
+                                <button type="submit" class="btn btn-link">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <div class="btn-group">
+                @Html.PageLinks(Model.Page, x => Url.Action("GetAllProducts", new { page = x }))
+            </div>
+        </div>
+    </div>
+</div>
 
-
-}
