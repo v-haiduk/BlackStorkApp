@@ -1,18 +1,6 @@
-﻿@model BlackStorkApp.Models.PaginationProductsModel
-@using BlackStorkApp.Helpers
-@{
-    Layout = "~/Views/Shared/MainLayout.cshtml";
-    ViewBag.Title = "Index";
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Панель администратора";
 }
 
-<h2>Index</h2>
-<a href="Admin/GetAllTopics" class="btn btn-info">View all topics</a>
-<a href="Admin/GetAllProducts" class="btn btn-info" hidden>View all products</a>
-<a href="Account/LogOff" class="btn btn-info">Log off</a>
 
-<h3>Выберите файл для загрузки</h3>
-@using (Html.BeginForm("Upload", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <input type="file" name="upload" /><br>
-    <input type="submit" value="Загрузить" />
-}

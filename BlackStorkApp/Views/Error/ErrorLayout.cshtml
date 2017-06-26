@@ -27,6 +27,10 @@
                 <div class="col-middle">
                     <div class="text-center text-center">
                         @RenderBody()
+
+                        <div class="mid_center">
+                            @Html.ActionLink("Перейти на главную страницу", "Index", "Home", null, new {@class = "btn btn-default"});
+                        </div>
                     </div>
                 </div>
             </div>

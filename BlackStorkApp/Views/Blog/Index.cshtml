@@ -9,32 +9,9 @@
     <div class="container clearfix">
         <h1>Блог</h1>
         <span>Наши последние новости</span>
-        <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">Widgets</li>
-        </ol>
+        @Html.MvcSiteMap().SiteMapPath()
     </div>
 </section><!-- #page-title end -->
-
-
-@*@foreach (BlackStorkApp.Models.TopicModel currentTopic in Model.Topics)
-{
-    <div class="row">
-        <p>@currentTopic.Header</p>
-        <p><img src="@currentTopic.PathForMainPhoto"/></p>
-        <p>@currentTopic.Description</p>
-        <p>@currentTopic.DateOfCreate</p>
-        <form action="Blog/GetDescriptionOfNews" method="post">
-            <input type="hidden" name="id" value="@currentTopic.TopicId"/>
-            <input type="submit" value="read more"/>
-        </form>
-    </div>
-}*@
-
-<div class="btn-group">
-    @Html.PageLinks(Model.Page, x => Url.Action("Index", new {page = x}))
-</div>
-
 
 <section id="content">
     <div class="content-wrap">
@@ -58,20 +35,23 @@
                             </ul>
                             <div class="entry-content">
                                 <p>@currentTopic.Description</p>
-                                <a href="#" class="more-link">Read More</a>
-                            </div>
+                                @using (Html.BeginForm("GetDescriptionOfNews", "Blog", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="id" value="@currentTopic.TopicId" />
+                                    <input type="submit" class="btn btn-default" value="Подробнее">
+                                }
+                            </div>                         
                         </div>
                     }
                 </div><!-- #posts end -->
-                <!-- Pagination
-                ============================================= -->
-                <ul class="pager nomargin">
-                    <li class="previous"><a href="#">&larr; Older</a></li>
-                    <li class="next"><a href="#">Newer &rarr;</a></li>
-                </ul><!-- .pager end -->
+
+                <div class="btn-group">
+                    @Html.PageLinks(Model.Page, x => Url.Action("Index", new { page = x }))
+                </div>
+
             </div><!-- .postcontent end -->
-            <!-- Sidebar
-            ============================================= -->
+
+            <!-- Sidebar -->
             <div class="sidebar nobottommargin col_last clearfix">
                 место для поиска
             </div><!-- .sidebar end -->

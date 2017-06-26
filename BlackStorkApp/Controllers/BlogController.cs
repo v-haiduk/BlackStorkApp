@@ -21,12 +21,14 @@ namespace BlackStorkApp.Controllers
         }
 
         /// <summary>
-        /// The method shows all news in the blog
+        /// The method shows all news with short-description in the blog
         /// </summary>
         /// <returns>The views with list of news</returns>
         public ActionResult Index(int page = 1)
         {
             IEnumerable<TopicDTO> topicDTOs = topicService.GetAllElements();
+            topicDTOs.ToList().ForEach(topic => topic.Description = topic.Description.Substring(0, 100));
+
             Mapper.Initialize(configuration => configuration.CreateMap<TopicDTO, TopicModel>());
             var topicsForDisplay = Mapper.Map<IEnumerable<TopicDTO>, List<TopicModel>>(topicDTOs);
 

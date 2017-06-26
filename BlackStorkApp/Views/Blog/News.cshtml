@@ -1,13 +1,44 @@
 ﻿@model BlackStorkApp.Models.TopicModel
 @{
     Layout = "~/Views/Shared/MainLayout.cshtml";
-    ViewBag.Title = "News";
+    ViewBag.Title = "Cтатья";
 }
 
-<h2>News</h2>
-<p>@Model.Header</p>
-<p>@Model.DateOfCreate</p>
-<p>@Model.Description</p>
-<p>@Model.PathForMainPhoto</p>
-<p>@Model.PathForFolderWithPhotos</p>
+<section id="page-title">
+    <div class="container clearfix">
+        <h1>Статья</h1>
+        @Html.MvcSiteMap().SiteMapPath()
+    </div>
+</section><!-- #page-title end -->
 
+<!-- Content -->
+<section id="content">
+    <div class="content-wrap">
+        <div class="container clearfix">
+            <!-- Post Content -->
+            <div class="postcontent nobottommargin clearfix">
+                <div class="entry clearfix">
+                    <div class="entry-title">
+                        <h2> @Model.Header </h2>
+                    </div>
+
+                    <ul class="entry-meta clearfix">
+                        <li><i class="icon-calendar3"></i> @Model.DateOfCreate </li>
+                    </ul>
+
+                    <div class="entry-image">
+                        <a href="#"><img src="@Model.PathForMainPhoto" alt="Blog Single"></a>
+                    </div>
+
+                    <div class="entry-content notopmargin"> @Model.Description </div>
+                </div>
+            </div><!-- .postcontent -->
+            
+            <!-- Sidebar -->
+            <div class="sidebar nobottommargin col_last clearfix">
+                место для поиска
+            </div><!-- .sidebar end -->
+
+        </div><!-- .container clearfix -->
+    </div><!-- .content-wrap -->
+</section><!-- #content end -->

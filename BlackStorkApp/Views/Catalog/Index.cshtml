@@ -2,9 +2,8 @@
 @using BlackStorkApp.Helpers
 @{
     Layout = "~/Views/Shared/MainLayout.cshtml";
-    ViewBag.Title = "Catalog";
+    ViewBag.Title = "Каталог";
 }
-<h2>Catalog</h2>
 
 <script type="text/javascript">
     function OnSuccess(data) {
@@ -16,32 +15,58 @@
     }
 </script>
 
-@using (Ajax.BeginForm("Search", new AjaxOptions { OnSuccess = "OnSuccess" }))
-{
-    <input type="text" name="name" />
-    <input type="submit" value="Поиск" />
-}
-<br />
-<div id="results"></div>
-@Scripts.Render("~/scripts/jquery-1.10.2.min.js")
-@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
-
-<p>начало списка</p>
-
-@foreach (BlackStorkApp.Models.ProductModel currentProduct in Model.Products)
-{
-    <div class="row">
-        <p>@currentProduct.Name</p>
-        <p>@currentProduct.Description</p>
-        <p><img src="@currentProduct.PathForMainPhoto"/> </p>
-        <p>@currentProduct.PathForFolderWithPhotos</p>
-
-        <form action="Catalog/Product" method="post">
-            <input type="hidden" name="id" value="@currentProduct.ProductId"/>
-            <input type="submit" value="read more"/>
-        </form>
+<section id="page-title">
+    <div class="container clearfix">
+        <h1>Каталог</h1>
+        <span>Продукция нашей компании</span>
+        
     </div>
-}
-<div class="btn-group">
-    @Html.PageLinks(Model.Page, x => Url.Action("Index", new { page = x }))
-</div>
+</section><!-- #page-title end -->
+
+<section id="content">
+    <div class="content-wrap">
+        <div class="container clearfix">
+            <!-- Shop -->
+            <div id="shop" class="shop product-1 clearfix">
+                @foreach (BlackStorkApp.Models.ProductModel currentProduct in Model.Products)
+                {
+                    <div class="product clearfix">
+                        <div class="product-image">
+                            <a href="#"><img src="@currentProduct.PathForMainPhoto" alt="Product"></a>
+                        </div>
+                        <div class="product-desc">
+                            <div class="product-title">
+                                <h3><a href="#"> @currentProduct.Name </a></h3>
+                            </div>
+
+                            <p> @currentProduct.Description </p>
+
+                            @using (Html.BeginForm("Product", "Catalog", FormMethod.Post))
+                            {
+                                <input type="hidden" name="id" value="@currentProduct.ProductId" />
+                                <input type="submit" value="Подробнее" class="btn btn-default" />
+                            }
+                        </div>
+                    </div>
+                }
+            </div><!-- #shop end -->
+
+            <div class="btn-group">
+                @Html.PageLinks(Model.Page, x => Url.Action("Index", new { page = x }))
+            </div>
+            <!-- Sidebar -->
+            <div class="sidebar nobottommargin col_last clearfix">
+                 @using (Ajax.BeginForm("Search", new AjaxOptions { OnSuccess = "OnSuccess" }))
+                 {
+                    <input type="text" name="name" />
+                    <input type="submit" value="Поиск" />
+                 }
+                <br />
+                <div id="results"></div>
+                @Scripts.Render("~/scripts/jquery-1.10.2.min.js")
+                @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+            </div><!-- .sidebar end -->
+
+        </div><!-- .container clearfix -->
+    </div><!-- .content-wrap -->
+</section><!-- #content end -->

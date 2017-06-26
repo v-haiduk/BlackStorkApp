@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="Главная" controller="Home" action="Index">
+      <mvcSiteMapNode title="О нас" controller="Home" action="About"/>
+      <mvcSiteMapNode title="Каталог" controller="Catalog" action="Index">
+          <mvcSiteMapNode title="Товар" controller="Catalog" action="Product"/>
+      </mvcSiteMapNode>
+      <mvcSiteMapNode title="Блог" controller="Blog" action="Index">
+          <mvcSiteMapNode title="Статья" controller="Blog" action="GetDescriptionOfNews"/>
+      </mvcSiteMapNode>
+      <mvcSiteMapNode title="Контакты" controller="Home" action="Feedback"/>
+  </mvcSiteMapNode>
+
+</mvcSiteMap>

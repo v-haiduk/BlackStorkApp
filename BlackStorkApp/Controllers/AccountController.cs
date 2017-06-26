@@ -23,17 +23,24 @@ namespace BlackStorkApp.Controllers
             userService = service;
         }
 
+        [Authorize]
         public ActionResult Index()
         {
             return View("Index");
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult Login()
         {
-            return View("Login");
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+            return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult Login(UserAccountModel user)
         {
@@ -46,18 +53,19 @@ namespace BlackStorkApp.Controllers
                 if (passwordHash == searchResults.HashOfPassword)
                 {
                     FormsAuthentication.SetAuthCookie(user.Login, true);
-                    return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("Index", "Admin" );
                 }
             }
 
-            ModelState.AddModelError("", "Введенный пароль неверен!"); //change!
+            ModelState.AddModelError("", "Ошибка! Пожалуйста, проверьте ввееденные данные!");
 
-            return View("Index", user);
+            return View(user);
         }
 
         /// <summary>
         /// The method close's the session
         /// </summary>
+        [Authorize]
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();

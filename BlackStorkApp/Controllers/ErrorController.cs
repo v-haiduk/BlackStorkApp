@@ -8,6 +8,11 @@ namespace BlackStorkApp.Controllers
 {
     public class ErrorController : Controller
     {
+        public ActionResult Unauthorized()
+        {
+            Response.StatusCode = 401;
+            return View();
+        }
 
         public ActionResult Forbidden()
         {

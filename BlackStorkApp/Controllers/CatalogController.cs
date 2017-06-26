@@ -21,12 +21,14 @@ namespace BlackStorkApp.Controllers
         }
 
         /// <summary>
-        /// The method shows all products and adds a pagination
+        /// The method shows all products with short-description and adds a pagination
         /// </summary>
         /// <returns>The views with list of products</returns>
         public ActionResult Index(int page = 1)
         {
             IEnumerable<ProductDTO> productDTOs = productService.GetAllElements();
+            productDTOs.ToList().ForEach(prod => prod.Description = prod.Description.Substring(0, 100));
+
             Mapper.Initialize(configuratin => configuratin.CreateMap<ProductDTO, ProductModel>());
             var productsForDisplay = Mapper.Map<IEnumerable<ProductDTO>, List<ProductModel>>(productDTOs);
 

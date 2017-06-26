@@ -1,11 +1,63 @@
 ﻿@model BlackStorkApp.Models.ProductModel
 @{
     Layout = "~/Views/Shared/MainLayout.cshtml";
-    ViewBag.Title = "DescriptionOfProduct";
+    ViewBag.Title = "Описание товара";
 }
+<section id="page-title">
+    <div class="container clearfix">
+        <h1>@Model.Name</h1>
 
-<h2>DescriptionOfProduct</h2>
-<p>@Model.Name</p>
-<p>@Model.Description</p>
-<p>@Model.PathForMainPhoto</p>
-<p>@Model.PathForFolderWithPhotos</p>
+    </div>
+</section><!-- #page-title end -->
+
+<!-- Content -->
+<section id="content">
+    <div class="content-wrap">
+        <div class="container clearfix">
+            <!-- Post Content -->
+            <div class="postcontent nobottommargin clearfix">
+                <div class="entry clearfix">
+                    <div class="entry-image">
+                        <a href="#"><img src="@Model.PathForMainPhoto" alt="Blog Single"></a>
+                    </div>
+
+                    <div class="entry-content notopmargin"> @Model.Description </div>
+                </div>
+            </div><!-- .postcontent -->
+            <!-- Sidebar -->
+            <div class="sidebar nobottommargin col_last clearfix">
+                <div class="divider divider-center"><i class="icon-circle-blank"></i></div>
+                <div class="feature-box fbox-plain fbox-dark fbox-small">
+                    <div class="fbox-icon">
+                        <i class="icon-thumbs-up2"></i>
+                    </div>
+                    <h3>100% качество</h3>
+                    <p class="notopmargin">Все снаряжение изготавливается из высококачественных материалов.</p>
+                </div>
+                <div class="feature-box fbox-plain fbox-dark fbox-small">
+                    <div class="fbox-icon">
+                        <i class="icon-credit-cards"></i>
+                    </div>
+                    <h3>Наложенный платеж</h3>
+                    <p class="notopmargin">Оплата товара может производится после получения.</p>
+                </div>
+                <div class="feature-box fbox-plain fbox-dark fbox-small">
+                    <div class="fbox-icon">
+                        <i class="icon-truck2"></i>
+                    </div>
+                    <h3>Международная доставка</h3>
+                    <p class="notopmargin">Мы осуществляем доставку по всему миру.</p>
+                </div>
+                <div class="feature-box fbox-plain fbox-dark fbox-small">
+                    <div class="fbox-icon">
+                        <i class="icon-undo"></i>
+                    </div>
+                    <h3>30-ти дневный возврат</h3>
+                    <p class="notopmargin">Возврат или обмен товара можно произвести в течении 30 дней.</p>
+                </div>	
+            </div><!-- .sidebar end -->
+
+        </div><!-- .container clearfix -->
+    </div><!-- .content-wrap -->
+</section><!-- #content end -->
+

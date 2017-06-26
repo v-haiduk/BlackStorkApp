@@ -14,6 +14,7 @@ using PagedList;
 
 namespace BlackStorkApp.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IMainService<ProductDTO> productService;
@@ -65,10 +66,11 @@ namespace BlackStorkApp.Controllers
         public string Upload(HttpPostedFileBase photo)
         {
             string fileName = System.IO.Path.GetFileName(photo.FileName);
-            string filePath = Server.MapPath("~/Content/img/" + fileName);
-            photo.SaveAs(filePath);
+            string relativeFilePath = "/Content/img/" + fileName;
+            string fullFilePath = Server.MapPath(relativeFilePath);
+            photo.SaveAs(fullFilePath);
 
-            return filePath;
+            return relativeFilePath;
         }
 
 

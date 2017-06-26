@@ -74,3 +74,7 @@ C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\Bla
 C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\PagedList.Mvc.dll
 C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\PagedList.xml
 C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\PagedList.Mvc.xml
+C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\MvcSiteMapProvider.dll
+C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\MvcSiteMapProvider.WebActivator.dll
+C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\MvcSiteMapProvider.xml
+C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\BlackStorkApp\bin\MvcSiteMapProvider.WebActivator.xml
