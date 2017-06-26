@@ -37,7 +37,7 @@ namespace BLL.Services
         {
             if (predicate == null)
             {
-                throw new ValidationException("", "");
+                throw new ValidationException("Извините, данная статья не найдена", "");
             }
             var predicateCompile = predicate.Compile();
             var resultOfFind = GetAllElements().Where(predicateCompile);
@@ -53,13 +53,13 @@ namespace BLL.Services
         {
             if (id == null)
             {
-                throw new ValidationException("????????", "");      //нельзя писать, что id не установлен. надо придумать текст
+                throw new ValidationException("Не установлен id статьи ", "");  
             }
 
             var topic = uow.Topics.GetElement(id.Value);
             if (topic == null)
             {
-                throw new ValidationException("Извините, но ничего не найдено", "");
+                throw new ValidationException("Извините, данная статья не найдена", "");
             }
 
             Mapper.Initialize(configuration => configuration.CreateMap<Topic, TopicDTO>());
@@ -114,7 +114,7 @@ namespace BLL.Services
         {
             if (id == null)
             {
-                throw new ValidationException("", "");
+                throw new ValidationException("Не установлен id стать ", "");
             }
 
             uow.Topics.Delete(id.Value);

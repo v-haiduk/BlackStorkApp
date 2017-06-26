@@ -23,11 +23,11 @@ namespace BlackStorkApp.Controllers
             userService = service;
         }
 
-        [Authorize]
-        public ActionResult Index()
-        {
-            return View("Index");
-        }
+        //[Authorize]
+        //public ActionResult Index()
+        //{
+        //    return View("Index");
+        //}
 
         [AllowAnonymous]
         [HttpGet]

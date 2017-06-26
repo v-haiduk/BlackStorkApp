@@ -48,13 +48,13 @@ namespace BLL.Services
         {
             if (id == null)
             {
-                throw new ValidationException("????????", "");      //нельзя писать, что id не установлен. надо придумать текст
+                throw new ValidationException("Не установлен id пользователя ", "");      
             }
 
             var account = uow.UsersAccounts.GetElement(id.Value);
             if (account == null)
             {
-                throw new ValidationException("Извините, но ничего не найдено", "");
+                throw new ValidationException("Извините, данный пользователь не найден", "");
             }
             Mapper.Initialize(configutation => configutation.CreateMap<UserAccount, UserAccountDTO>());
 
@@ -101,7 +101,7 @@ namespace BLL.Services
         {
             if (id == null)
             {
-                throw new ValidationException("????", "??????"); //CHANGE THIS MESSAGE!
+                throw new ValidationException("Не установлен id пользователя ", ""); 
             }
             uow.UsersAccounts.Delete(id.Value);
             uow.SaveChanges();

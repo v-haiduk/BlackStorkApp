@@ -38,7 +38,7 @@ namespace BLL.Services
         {
             if (predicate == null)
             {
-                throw new ValidationException("", "");
+                throw new ValidationException("Извините, товар не найден", "");
             }
             var predicateCompile = predicate.Compile();
             var resultOfFind = GetAllElements().Where(predicateCompile);
@@ -54,7 +54,7 @@ namespace BLL.Services
         {
             if (id == null)
             {
-                throw new ValidationException("Извините, товар не найден", "");
+                throw new ValidationException("Не установлен id товара", "");
             }
 
             var product = uow.Products.GetElement(id.Value);
@@ -114,7 +114,7 @@ namespace BLL.Services
         {
             if (id == null)
             {
-                throw new ValidationException("", "");
+                throw new ValidationException("Не установлен id товара", "");
             }
 
             uow.Products.Delete(id.Value);

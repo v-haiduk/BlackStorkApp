@@ -481,7 +481,6 @@
     <Content Include="Views\Admin\EditOfProduct.cshtml" />
     <Content Include="Views\Error\Forbidden.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Home\Feedback.cshtml" />
     <Content Include="Scripts\maps\us-unemployment.json" />
     <Content Include="Views\Error\NotFound.cshtml" />

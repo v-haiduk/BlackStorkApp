@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -7,29 +6,27 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Авторизация</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/animate.min.css" rel="stylesheet">
-
-    <!-- Custom styling plus plugins -->
-    <link href="~/Content/custom.css" rel="stylesheet">
-    <link href="~/Content/icheck/flat/green.css" rel="stylesheet">
-    <script src="~/Scripts/jquery.min.js"></script>
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/animate.min.css")
+    @Styles.Render("~/Content/custom.css")
+    @Styles.Render("~/Content/icheck/flat/green.css")
+    @Scripts.Render("~/Scripts/jquery.min.js")
 </head>
 
-<body style="background:#F7F7F7;">
+<body>
     <div id="wrapper">
         <section class="login_content">
             <form method="post" role="form">
                 <h1>Авторизация</h1>
                 <div>
-                    <input class="form-control" type="text" name="Login" placeholder="Введите логин..." maxlength="20" required />
+                    <input class="form-control" type="text" name="Login" placeholder="Введите логин..." maxlength="20" required >
                 </div>
                 <div>
                     <input class="form-control" type="password" name="HashOfPassword" placeholder="Введите пароль..." maxlength="20" required />
                 </div>
                 <div>
                     <button class="btn btn-default" type="submit">Войти</button>
-                    <a class="reset_pass" href="#">Забыли пароль?</a>
+                    <a class="reset_pass" href="#">Забыли пароль?</a> <!--Add method for recovery of password--->
                 </div>
 
                 <div class="separator">

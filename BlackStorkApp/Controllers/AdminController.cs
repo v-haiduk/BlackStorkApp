@@ -218,7 +218,7 @@ namespace BlackStorkApp.Controllers
             var topicDTOForEdit = topicService.GetElement(id);
             if (topicDTOForEdit == null)
             {
-                return HttpNotFound("first exception");
+                return HttpNotFound();
             }
 
             Mapper.Initialize(configuration => configuration.CreateMap<TopicDTO, TopicModel>());
@@ -228,7 +228,7 @@ namespace BlackStorkApp.Controllers
                 return View("EditOfTopic",topicModelForEdit);
             }
 
-            return HttpNotFound("second exception");
+            return HttpNotFound();
         }
 
 
