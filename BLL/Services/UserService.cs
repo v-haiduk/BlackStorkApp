@@ -119,9 +119,22 @@ namespace BLL.Services
         public UserAccountDTO GetByLogin(string login)
         {
             var requestedUser = uow.UsersAccounts.FindElement(user => user.Login == login).FirstOrDefault();
-            Mapper.Initialize(configutation => configutation.CreateMap<UserAccount, UserAccountDTO>());
 
-            return Mapper.Map<UserAccount, UserAccountDTO>(requestedUser);
+            if (requestedUser == null)
+            {              
+                return null;
+            }
+
+            UserAccountDTO account = new UserAccountDTO
+            {
+                UserId = requestedUser.UserAccountId,
+                Login = requestedUser.Login,
+                HashOfPassword = requestedUser.HashOfPassword
+            };
+
+            //Mapper.Initialize(configutation => configutation.CreateMap<UserAccount, UserAccountDTO>());
+            //return Mapper.Map<UserAccount, UserAccountDTO>(requestedUser);
+            return account;
         }
     }
 }

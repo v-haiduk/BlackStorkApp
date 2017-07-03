@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 using BLL.DTO;
 using BLL.Infrastructure;
 using BLL.Interfaces;
@@ -29,6 +30,7 @@ namespace BlackStorkApp.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            Session["name"] = HttpContext.User.Identity.Name;
             return View();
         }
 
@@ -48,9 +50,13 @@ namespace BlackStorkApp.Controllers
         /// <param name="product">The new product, which will be add in a DB</param>
         /// <param name="photo">The new main photo uploaded by user</param>
         [HttpPost]
-        public ActionResult CreateOfProduct(ProductModel product, HttpPostedFileBase photo)
+        public ActionResult CreateOfProduct(ProductModel product, HttpPostedFileBase photo = null)
         {
-            product.PathForMainPhoto = Upload(photo);
+            if (photo != null)
+            {
+                product.PathForMainPhoto = Upload(photo);
+            }
+                        
             Mapper.Initialize(configuration => configuration.CreateMap<ProductModel, ProductDTO>());
             var newProduct = Mapper.Map<ProductModel, ProductDTO>(product);
             productService.CreateElement(newProduct);
@@ -102,16 +108,22 @@ namespace BlackStorkApp.Controllers
         /// <summary>
         /// The method sends an update about product, which added the admin 
         /// </summary>
-        /// <param name="productModel">The product, which edited an administrator</param>
+        /// <param name="product">The product, which edited an administrator</param>
         [HttpPost]
-        public ActionResult EditOfProduct(ProductModel productModel)
+        public ActionResult EditOfProduct(ProductModel product, HttpPostedFileBase photo = null)
         {
-            if (productModel == null)
+            if (product == null)
             {
                 return HttpNotFound();
             }
+
+            if (photo != null)
+            {
+                product.PathForMainPhoto = Upload(photo);
+            }
+
             Mapper.Initialize(configuration => configuration.CreateMap<ProductModel, ProductDTO>());
-            var productForEdit = Mapper.Map<ProductModel, ProductDTO>(productModel);
+            var productForEdit = Mapper.Map<ProductModel, ProductDTO>(product);
             productService.UpdateElement(productForEdit);
 
             return RedirectToAction("GetAllProducts");
@@ -192,9 +204,13 @@ namespace BlackStorkApp.Controllers
         /// <param name="topic">The new topic, which will be add in a DB</param>
         /// <param name="photo">The new main photo uploaded by user</param>
         [HttpPost]
-        public ActionResult CreateOfTopic(TopicModel topic, HttpPostedFileBase photo)
+        public ActionResult CreateOfTopic(TopicModel topic, HttpPostedFileBase photo = null)
         {
-            topic.PathForMainPhoto = Upload(photo);
+            if (photo != null)
+            {
+                topic.PathForMainPhoto = Upload(photo);
+            }
+
             Mapper.Initialize(configuration => configuration.CreateMap<TopicModel, TopicDTO>());
             var newTopic = Mapper.Map<TopicModel, TopicDTO>(topic);
             topicService.CreateElement(newTopic);
@@ -235,16 +251,22 @@ namespace BlackStorkApp.Controllers
         /// <summary>
         /// The method sends an update about topic, which added the admin 
         /// </summary>
-        /// <param name="topicModel">The topic, which edited an administrator</param>
+        /// <param name="topic">The topic, which edited an administrator</param>
         [HttpPost]
-        public ActionResult EditOfTopic(TopicModel topicModel)
+        public ActionResult EditOfTopic(TopicModel topic, HttpPostedFileBase photo = null)
         {
-            if (topicModel == null)
+            if (topic == null)
             {
                 return HttpNotFound();
             }
+
+            if (photo != null)
+            {
+                topic.PathForMainPhoto = Upload(photo);
+            }
+
             Mapper.Initialize(configuration => configuration.CreateMap<TopicModel, TopicDTO>());
-            var topicDTOForEdit = Mapper.Map<TopicModel, TopicDTO>(topicModel);
+            var topicDTOForEdit = Mapper.Map<TopicModel, TopicDTO>(topic);
             topicService.UpdateElement(topicDTOForEdit);
 
             return RedirectToAction("GetAllTopics");
@@ -346,5 +368,38 @@ namespace BlackStorkApp.Controllers
             return File(filePath, fileType, fileName);
         }
 
+        [HttpPost]
+        public ActionResult ImportFromXML(HttpPostedFileBase file)
+        {
+            if (file == null)
+            {
+                return HttpNotFound();
+            }
+            string filePath = Server.MapPath("~/Content/documents/" + Path.GetFileName(file.FileName));
+            file.SaveAs(filePath);
+
+            
+            TransferData export = new TransferData(productService);
+            export.ImportFromXML(filePath);
+
+            return RedirectToAction("GetAllProducts");
+        }
+
+        [HttpPost]
+        public ActionResult ImportFromXLSX(HttpPostedFileBase file)
+        {
+            if (file == null)
+            {
+                return HttpNotFound();
+            }
+
+            string filePath = Server.MapPath("~/Content/documents/" + Path.GetFileName(file.FileName));
+            file.SaveAs(filePath);
+
+            TransferData export = new TransferData(productService);
+            export.ImportFromXLSX(filePath);
+
+            return RedirectToAction("GetAllProducts");
+        }
     }
 }

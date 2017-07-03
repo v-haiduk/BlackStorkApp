@@ -234,7 +234,8 @@ namespace DAL.EF
             });
 
 
-            context.UserAccounts.Add(new UserAccount {Login = "admin", HashOfPassword = "123"});
+            context.UserAccounts.Add(new UserAccount {Login = "v-haiduk@yandex.ru", HashOfPassword = "123" });
+            context.UserAccounts.Add(new UserAccount {Login = "v-haiduk@hotmail.com", HashOfPassword = "12345" });
 
 
             base.Seed(context);

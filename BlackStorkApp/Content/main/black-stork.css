@@ -1,0 +1,54 @@
+﻿body {
+}
+
+.block-turquoise {
+    background-color: rgb(26, 188, 156);
+    height: 7%;
+}
+
+.block-turquoise .p {
+    line-height: 1.8;
+}
+
+.block-navy {
+    background-color: rgb(52, 73, 94);
+    height: 7%;
+}
+.block-navy .p {
+    line-height: 1.8;
+}
+
+.slider-main {
+    background: url('../../Content/img/telmar-1.jpg') no-repeat;
+    -ms-background-size: cover;
+    background-size: cover
+}
+
+
+.slide-review {
+    width: 100%; 
+    float: left; 
+    margin-right: -100%; 
+    position: relative; 
+    opacity: 0; 
+    display: block; 
+    z-index: 1;
+}
+
+.slide-review-active {
+    width: 100%; 
+    float: left; 
+    margin-right: -100%; 
+    position: relative; 
+    opacity: 1; 
+    display: block; 
+    z-index: 2;
+}
+
+.flexslider-height {
+    height: 5%;
+}
+
+.upperase-main {
+    font-weight: 600;
+}

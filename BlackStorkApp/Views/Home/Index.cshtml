@@ -3,7 +3,110 @@
     ViewBag.Title = "Главная";
 }
 
-<section id="content">
-    <div class="content-wrap"> <h2>Cтраница находится в разработке</h2> </div>
+<section id="slider" class="slider-parallax slider-main" data-height-lg="600" data-height-md="500" data-height-sm="400" data-height-xs="300" data-height-xxs="250">
+    <div class="slider-parallax-inner">
+        <div class="container clearfix">
+            <!----<div class="vertical-middle dark center">
+                <div class="heading-block nobottommargin center">
+                    <h1>
+                        <span class="text-rotater nocolor" data-separator="|" data-rotate="flipInX" data-speed="3500">
+                            АМУНИЦИЯ BLACK STORK это <span class="t-rotate">КАЧЕСТВО|УДОБСТВО</span>
+                        </span>
+                    </h1>
+                    <span class="hidden-xs">Мы занимаемся изготовления амунции с 2012 года.</span>
+                </div>
+                <a href="#" class="button button-border button-light button-rounded button-reveal tright button-large topmargin hidden-xs">
+                    <i class="icon-angle-right"></i><span>Просмотреть каталог</span>
+                </a>
+            </div><!---.verical-middle-->
+        </div>
+    </div><!---.slider-parallax-inner-->
 </section>
+<div class="line"></div>
 
+<div class="divcenter center clearfix" style="max-width: 900px;">
+    <h2>Добро пожаловать на сайт <span>Black Stork!</span></h2>
+    <h3>Производителя снаряжения для ездового спорта, а также другой амуниции для собак</h3>
+    @Html.ActionLink("О нас", "Index", "Home", null, new { @class = "button button-3d button-dark button-large" })
+    @Html.ActionLink("Блог", "Index", "Blog", null, new { @class = "button button-3d button-large" })
+</div>
+<div class="line"></div>
+
+<div class="col_full common-height">
+    <div class="col-md-4 dark col-padding ohidden block-turquoise">
+        <div>
+            <h3 class="uppercase upperase-main">Lorem ipsum</h3>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </p>
+            <a href="#" class="button button-border button-light button-rounded uppercase nomargin">Read More</a>
+            <i class="icon-bulb bgicon"></i>
+        </div>
+    </div>
+
+    <div class="col-md-4 dark col-padding ohidden block-navy">
+        <div>
+            <h3 class="uppercase upperase-main">Lorem ipsum</h3>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </p>
+            <a href="#" class="button button-border button-light button-rounded uppercase nomargin">Read More</a>
+            <i class="icon-cog bgicon"></i>
+        </div>
+    </div>
+
+    <div class="col-md-4 dark col-padding ohidden block-turquoise">
+        <div>
+            <h3 class="uppercase upperase-main">Lorem ipsum</h3>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </p>
+            <a href="#" class="button button-border button-light button-rounded uppercase nomargin">Read More</a>
+            <i class="icon-thumbs-up bgicon"></i>
+        </div>
+    </div>
+</div>
+
+<div class="section topmargin-sm footer-stick">
+
+    <h4 class="uppercase center">Что говорят <span>клиенты </span>о black stork?</h4>
+
+    <div class="fslider testimonial testimonial-full" data-animation="fade" data-arrows="false">
+        <div class="flexslider flexslider-heigh">
+            <div class="slider-wrap">
+                <div class="slide slide-review" data-thumb-alt="">
+                    <div class="testi-image">
+                        <img src="~/Content/img/avatar_1.jpg" alt="Customer Testimonails" draggable="false">
+                    </div>
+                    <div class="testi-content">
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                        <div class="testi-meta">
+                            Sam Smith
+                            <span>Apple Inc.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide slide-review" data-thumb-alt="">
+                    <div class="testi-image">
+                        <img src="~/Content/img/avatar_1.jpg" alt="Customer Testimonails" draggable="false">
+                    </div>
+                    <div class="testi-content">
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                        <div class="testi-meta">
+                            Alex Smith
+                            <span>Envato Inc.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide flex-active-slide slide-review-active" data-thumb-alt="">
+                    <div class="testi-image">
+                        <img src="~/Content/img/avatar_1.jpg" alt="Customer Testimonails" draggable="false">
+                    </div>
+                    <div class="testi-content">
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                        <div class="testi-meta">
+                            John Doe
+                            <span>XYZ Inc.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ol class="flex-control-nav flex-control-paging"><li><a href="#" class="">1</a></li><li><a href="#" class="">2</a></li><li><a href="#" class="flex-active">3</a></li></ol>
+        </div>
+    </div>
+
+</div>

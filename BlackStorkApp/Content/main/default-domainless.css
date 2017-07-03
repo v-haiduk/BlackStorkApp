@@ -1,1 +1,18 @@
 a[href^="http://c.ketads.com/"]{display : none !important;}
+
+.login-page {
+    width: 100%; 
+    height: 100%; 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    background: #444;
+}
+
+.login-page-panel {
+    padding: 40px;
+}
+
+.panel-login {
+    max-width: 400px;
+}

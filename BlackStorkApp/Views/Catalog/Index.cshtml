@@ -5,16 +5,6 @@
     ViewBag.Title = "Каталог";
 }
 
-<script type="text/javascript">
-    function OnSuccess(data) {
-        var results = $('#results'); // получаем нужный элемент
-        results.empty(); //очищаем элемент
-        for (var i = 0; i < data.length; i++) {
-            results.append('<li>' + data[i].Name + '</li>'); // добавляем данные в список
-        }
-    }
-</script>
-
 <section id="page-title">
     <div class="container clearfix">
         <h1>Каталог</h1>
@@ -26,45 +16,42 @@
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
-            <!-- Shop -->
-            <div id="shop" class="shop product-1 clearfix">
-                @foreach (BlackStorkApp.Models.ProductModel currentProduct in Model.Products)
+            <div class="postcontent nobottommargin clearfix">
+                <!-- Shop -->
+                <div id="shop" class="shop product-1 clearfix">
+                    @foreach (BlackStorkApp.Models.ProductModel currentProduct in Model.Products)
                 {
-                    <div class="product clearfix">
-                        <div class="product-image">
-                            <a href="#"><img src="@currentProduct.PathForMainPhoto" alt="Product"></a>
-                        </div>
-                        <div class="product-desc">
-                            <div class="product-title">
-                                <h3><a href="#"> @currentProduct.Name </a></h3>
-                            </div>
-
-                            <p> @currentProduct.Description </p>
-
-                            @using (Html.BeginForm("Product", "Catalog", FormMethod.Post))
-                            {
-                                <input type="hidden" name="id" value="@currentProduct.ProductId" />
-                                <input type="submit" value="Подробнее" class="btn btn-default" />
-                            }
-                        </div>
+                <div class="product clearfix">
+                    <div class="product-image">
+                        <a href="#"><img src="@currentProduct.PathForMainPhoto" alt="Product"></a>
                     </div>
-                }
-            </div><!-- #shop end -->
+                    <div class="product-desc">
+                        <div class="product-title">
+                            <h3>
+                                <a href="#"> @currentProduct.Name </a>
+                            </h3>
+                        </div>
 
-            <div class="btn-group">
-                @Html.PageLinks(Model.Page, x => Url.Action("Index", new { page = x }))
-            </div>
+                        <p> @currentProduct.Description </p>
+
+                        @using (Html.BeginForm("Product", "Catalog", FormMethod.Post))
+                            {
+                            <input type="hidden" name="id" value="@currentProduct.ProductId" />
+                            <input type="submit" value="Подробнее" class="btn btn-default" />
+                            }
+                    </div>
+                </div>
+                }
+                </div><!-- #shop end -->
+
+                <div class="btn-group">
+                    @Html.PageLinks(Model.Page, x => Url.Action("Index", new { page = x }))
+                </div>
+            </div> <!---.postcontent -->
+
             <!-- Sidebar -->
             <div class="sidebar nobottommargin col_last clearfix">
-                 @using (Ajax.BeginForm("Search", new AjaxOptions { OnSuccess = "OnSuccess" }))
-                 {
-                    <input type="text" name="name" />
-                    <input type="submit" value="Поиск" />
-                 }
-                <br />
-                <div id="results"></div>
-                @Scripts.Render("~/scripts/jquery-1.10.2.min.js")
-                @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+                @Html.Partial("Search")
             </div><!-- .sidebar end -->
 
         </div><!-- .container clearfix -->

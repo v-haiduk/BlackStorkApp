@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Авторизация</title>
+    @Styles.Render("~/Content/main/main.css")
+    @Styles.Render("~/Content/main/default-domainless.css")
+</head>
+
+<body class="stretched">
+    <div id="wrapper" class="clearfix">
+        <section id="content">
+            <div class="content-wrap nopadding">
+                <div class="section nopadding nomargin login-page"></div>
+                <div class="section nobg full-screen nopadding nomargin">
+                    <div class="container vertical-middle divcenter clearfix">
+
+                        <div class="panel panel-default panel-login divcenter noradius noborder">
+                            <div class="panel-body login-page-panel">
+                                
+                                @RenderBody()
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- #content end -->
+     </div><!-- #wrapper end -->
+</body>
+    @Scripts.Render("~/Scripts/main/jquery.js")
+    @Scripts.Render("~/Scripts/main/functions.js")
+</html>

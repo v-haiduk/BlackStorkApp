@@ -71,12 +71,11 @@ namespace BLL.Services
         /// <summary>
         /// The method gets the new product from PL and save it in DB
         /// </summary>
-        /// <param name="item">Thew new product</param>
+        /// <param name="element">Thew new product</param>
         public void CreateElement(ProductDTO element)
         {
             Product product = new Product
             {
-                //add id
                 Name = element.Name,
                 Description = element.Description,
                 PathForMainPhoto = element.PathForMainPhoto,

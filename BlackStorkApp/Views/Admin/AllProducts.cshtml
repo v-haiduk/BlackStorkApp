@@ -15,22 +15,27 @@
                     <div class="btn-group">
                         <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false"> Экспорт <span class="caret"></span> </button>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a href="/Admin/ExportToXML">в XML</a>
-                            </li>
-                            <li>
-                                <a href="/Admin/ExportToExel">в XLSX</a>
-                            </li>
+                            <li> @Html.ActionLink("в XML", "ExportToXML", "Admin") </li>
+                            <li> @Html.ActionLink("в XLSX", "ExportToExel", "Admin") </li>
                         </ul>
                     </div>
                     <div class="btn-group">
                         <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false"> Импорт <span class="caret"></span> </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">из XML</a>
+                               @using (Html.BeginForm("ImportFromXML", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                               {
+                                <input type="file" name="file" accept=".xml" /><br>
+                                <input type="submit" class="btn btn-link" value="из XML" />
+                               }
+                                <div class="ln_solid"></div>
                             </li>
                             <li>
-                                <a href="#">из XLSX</a>
+                                @using (Html.BeginForm("ImportFromXLSX", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    <input type="file"  class="btn btn-link" name="file" accept=".xlsx, .xls"  /><br>
+                                    <input type="submit" class="btn btn-link" value="из Exel" />
+                                }
                             </li>
                         </ul>
                     </div>
@@ -67,25 +72,27 @@
                         <td> @currentProduct.Name </td>
                         <td> @currentProduct.Description </td>
                         <td>
-                            <form action="/Catalog/Product" method="post">
-                                <input type="hidden" name="id" value="@currentProduct.ProductId"/>
+                            @using (Html.BeginForm("Product", "Catalog", FormMethod.Post))
+                            {
+                                <input type="hidden" name="id" value="@currentProduct.ProductId" />
                                 <button type="submit" class="btn btn-link">
                                     <span class="glyphicon glyphicon-open"></span>
                                 </button>
-                            </form>
+                            }
                         </td>
                         <td>
                             <a href="/Admin/EditOfProduct/@currentProduct.ProductId" class="btn btn-link">
                                 <span class="glyphicon glyphicon-edit"></span>
                             </a>
                         </td>
-                        <td>
-                            <form method="post" action="DeleteOfProduct">
+                        <td>                           
+                            @using (Html.BeginForm("DeleteOfProduct", "Admin", FormMethod.Post))
+                            {
                                 <input type="hidden" name="id" value="@currentProduct.ProductId"/>
                                 <button type="submit" class="btn btn-link">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </button>
-                            </form>
+                            }
                         </td>
                     </tr>
                 }

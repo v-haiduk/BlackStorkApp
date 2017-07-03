@@ -14,7 +14,6 @@ namespace BlackStorkApp.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -39,8 +38,8 @@ namespace BlackStorkApp.Controllers
         [HttpPost]
         public ActionResult Feedback(FeedbackModel feedback)
         {
-            string email = "violetta.haiduk@gmail.com";
-            string password = "*******"; //CHANGE PASSWORD
+            string email = "test.blackstork@gmail.com";
+            string password = "02072017tb";
 
             var loginInfo = new NetworkCredential(email, password);
             var smtpClient = new SmtpClient("smtp.gmail.com", 587);

@@ -291,6 +291,8 @@
     <Content Include="Content\img\avatar_1.jpg" />
     <Content Include="Content\img\logo-black.png" />
     <Content Include="Content\img\logo-white.png" />
+    <Content Include="Content\img\telmar-1.jpg" />
+    <Content Include="Content\img\telmar-2.jpg" />
     <Content Include="Content\ion.rangeSlider.css" />
     <Content Include="Content\ion.rangeSlider.skinFlat.css" />
     <Content Include="Content\logs\2017-03-06\BlackStorkLogInfo.txt" />
@@ -298,6 +300,7 @@
     <Content Include="Content\logs\2017-06-16\BlackStorkLogInfo.txt" />
     <Content Include="Content\logs\2017-06-17\BlackStorkLogInfo.txt" />
     <Content Include="Content\logs\2017-06-18\BlackStorkLogInfo.txt" />
+    <Content Include="Content\main\black-stork.css" />
     <Content Include="Content\main\default-domainless.css" />
     <Content Include="Content\main\main.css" />
     <Content Include="Content\maps\jquery-jvectormap-2.0.3.css" />
@@ -422,6 +425,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knob\jquery.knob.min.js" />
+    <Content Include="Scripts\main\collections.js" />
+    <Content Include="Scripts\main\functions.js" />
+    <Content Include="Scripts\main\jquery.js" />
     <Content Include="Scripts\maps\gdp-data.js" />
     <Content Include="Scripts\maps\jquery-jvectormap-2.0.3.min.js" />
     <Content Include="Scripts\maps\jquery-jvectormap-us-aea-en.js" />
@@ -499,6 +505,12 @@
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\Shared\AdminPanel\Menu.cshtml" />
     <Content Include="Views\Error\Unauthorized.cshtml" />
+    <Content Include="Views\Shared\LoginPage.cshtml" />
+    <Content Include="Views\Account\PasswordRecovery.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\MessageSent.cshtml" />
+    <Content Include="Views\Account\NoUser.cshtml" />
+    <Content Include="Views\Shared\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -51,12 +51,13 @@
                             </a>
                         </td>
                         <td>
-                            <form method="post" action="DeleteOfTopic">
-                                <input type="hidden" name="id" value="@currentTopic.TopicId"/>
+                            @using (Html.BeginForm("DeleteOfTopic", "Admin", FormMethod.Post))
+                            {
+                                <input type="hidden" name="id" value="@currentTopic.TopicId" />
                                 <button type="submit" class="btn btn-link">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </button>
-                            </form>
+                            }
                         </td>
                     </tr>
                 }

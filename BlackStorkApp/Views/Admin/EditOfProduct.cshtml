@@ -16,7 +16,7 @@
 
         <div class="x_content">
             <div class="col-md-12">
-                <form class="form-horizontal form-label-left" method="post" role="form" id="form">
+                <form class="form-horizontal form-label-left" method="post" role="form" id="form" enctype="multipart/form-data">
                     <input type="hidden" name="ProductId" value="@Model.ProductId"/>
                     <input type="hidden" name="DateOfCreate" value="@DateTime.Now"/>
 
@@ -28,12 +28,10 @@
                     <div class="form-group">
                         <label>Описание *</label>
                         <textarea class="resizable_textarea form-control" type="text" name="Description"
-                                  rows="10" required>
-                                @Model.Description
-                            </textarea>
+                                  rows="10" required> @Model.Description </textarea>
                     </div>
 
-                    <!----change this region!-->
+                    <input class="btn btn-default" type="file" name="photo" placeholder="main photo" />
                     <input type="hidden" name="PathForMainPhoto" value="@Model.PathForMainPhoto"/>
                     <input type="hidden" name="PathForFolderWithPhotos" value="@Model.PathForFolderWithPhotos"/>
 

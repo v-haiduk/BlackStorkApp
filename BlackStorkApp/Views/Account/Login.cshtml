@@ -1,45 +1,24 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/LoginPage.cshtml";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Авторизация</title>
-    @Styles.Render("~/Content/bootstrap.min.css")
-    @Styles.Render("~/Content/animate.min.css")
-    @Styles.Render("~/Content/custom.css")
-    @Styles.Render("~/Content/icheck/flat/green.css")
-    @Scripts.Render("~/Scripts/jquery.min.js")
-</head>
 
-<body>
-    <div id="wrapper">
-        <section class="login_content">
-            <form method="post" role="form">
-                <h1>Авторизация</h1>
-                <div>
-                    <input class="form-control" type="text" name="Login" placeholder="Введите логин..." maxlength="20" required >
-                </div>
-                <div>
-                    <input class="form-control" type="password" name="HashOfPassword" placeholder="Введите пароль..." maxlength="20" required />
-                </div>
-                <div>
-                    <button class="btn btn-default" type="submit">Войти</button>
-                    <a class="reset_pass" href="#">Забыли пароль?</a> <!--Add method for recovery of password--->
-                </div>
-
-                <div class="separator">
-                    <div class="clearfix"></div>
-                    <br />
-                    <div>
-                        <h1>BLACK STORK</h1>
-                        <p>©2017 Все права защищены.</p>
-                    </div>
-                </div>
-            </form><!-- form -->
-        </section><!-- login_content -->
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    <div class="row center">
+        <h1>Авторизация</h1>
     </div>
-</body>
-</html>
+    <div class="col_full">
+        <label for="login-form-username">Логин:</label>
+        <input class="form-control not-dark" type="text" id="login-form-username" name="Login" maxlength="20" required>
+    </div>
+    <div class="col_full">
+        <label for="login-form-password">Пароль:</label>
+        <input class="form-control not-dark" type="password" id="login-form-password" name="HashOfPassword" maxlength="20" required />
+    </div>
+    <div class="col_full nobottommargin">
+        <button class="button button-3d button-black nomargin" id="login-form-submit" type="submit">Войти</button>
+        @Html.ActionLink("Забыли пароль?", "ResetPassword", "Account", null, new {@class = "fright" })
+    </div>
+}
+
 

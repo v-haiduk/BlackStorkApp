@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Entities
 {
@@ -7,6 +8,7 @@ namespace DAL.Entities
     /// </summary>
     public class UserAccount
     {
+        [Key]
         public int UserAccountId { get; set; }
         public string Login { get; set; }
         public string HashOfPassword { get; set; }

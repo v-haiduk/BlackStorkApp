@@ -16,7 +16,7 @@
     </div>
     <div class="x_content">
         <div class="col-md-12">
-            <form class="form-horizontal form-label-left" method="post" role="form" id="form">
+            <form class="form-horizontal form-label-left" method="post" role="form" id="form" enctype="multipart/form-data">
                 <input type="hidden" name="TopicId" value="@Model.TopicId"/>
                 <input type="hidden" name="DateOfCreate" value="@DateTime.Now"/>
 
@@ -33,7 +33,7 @@
                         </textarea>
                 </div>
 
-                <!----change this region--->
+                <input class="btn btn-default" type="file" name="photo" placeholder="main photo" />
                 <input type="hidden" name="PathForMainPhoto" value="@Model.PathForMainPhoto"/>
                 <input type="hidden" name="PathForFolderWithPhotos" value="@Model.PathForFolderWithPhotos"/>
 

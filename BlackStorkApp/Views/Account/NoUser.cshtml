@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/LoginPage.cshtml";
+}
+
+<div class="row center">
+    <div class="col_full">
+        <h2>Пользователя с таким e-mail нет в системе</h2>
+    </div>
+    <div class="col_full nobottommargin">
+        <p>@Html.ActionLink("Веррнуться к авторизации", "Login", "Account", null, new { @class = "button button-3d button - black nomargin" })</p>
+    </div>   
+</div>
