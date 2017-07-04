@@ -6,7 +6,7 @@
 <section id="slider" class="slider-parallax slider-main" data-height-lg="600" data-height-md="500" data-height-sm="400" data-height-xs="300" data-height-xxs="250">
     <div class="slider-parallax-inner">
         <div class="container clearfix">
-            <!----<div class="vertical-middle dark center">
+            <div class="vertical-middle dark center">
                 <div class="heading-block nobottommargin center">
                     <h1>
                         <span class="text-rotater nocolor" data-separator="|" data-rotate="flipInX" data-speed="3500">
@@ -15,9 +15,7 @@
                     </h1>
                     <span class="hidden-xs">Мы занимаемся изготовления амунции с 2012 года.</span>
                 </div>
-                <a href="#" class="button button-border button-light button-rounded button-reveal tright button-large topmargin hidden-xs">
-                    <i class="icon-angle-right"></i><span>Просмотреть каталог</span>
-                </a>
+                    @Html.ActionLink("Просмотреть каталог", "Index", "Catalog", null, new {@class= "button button-border button-light button-rounded button-reveal tright button-large topmargin hidden-xs" })
             </div><!---.verical-middle-->
         </div>
     </div><!---.slider-parallax-inner-->
@@ -59,18 +57,17 @@
             <i class="icon-thumbs-up bgicon"></i>
         </div>
     </div>
-</div>
+</div><!---.col_full-->
+<div class="line"></div>
 
-<div class="section topmargin-sm footer-stick">
-
-    <h4 class="uppercase center">Что говорят <span>клиенты </span>о black stork?</h4>
-
+<div class="section testimonial-main">
+    <h4 class="uppercase center">Что говорят <span>клиенты</span> о black stork?</h4>
     <div class="fslider testimonial testimonial-full" data-animation="fade" data-arrows="false">
-        <div class="flexslider flexslider-heigh">
+        <div class="flexslider">
             <div class="slider-wrap">
-                <div class="slide slide-review" data-thumb-alt="">
+                <div class="slide">
                     <div class="testi-image">
-                        <img src="~/Content/img/avatar_1.jpg" alt="Customer Testimonails" draggable="false">
+                        <img src="~/Content/img/avatar_1.jpg" alt="Customer Testimonails">
                     </div>
                     <div class="testi-content">
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
@@ -80,9 +77,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide slide-review" data-thumb-alt="">
+
+                <div class="slide">
                     <div class="testi-image">
-                        <img src="~/Content/img/avatar_1.jpg" alt="Customer Testimonails" draggable="false">
+                        <img src="~/Content/img/avatar_1.jpg" alt="Customer Testimonails">
                     </div>
                     <div class="testi-content">
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
@@ -92,9 +90,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide flex-active-slide slide-review-active" data-thumb-alt="">
+
+                <div class="slide">
                     <div class="testi-image">
-                        <img src="~/Content/img/avatar_1.jpg" alt="Customer Testimonails" draggable="false">
+                        <img src="~/Content/img/avatar_1.jpg" alt="Customer Testimonails">
                     </div>
                     <div class="testi-content">
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
@@ -104,9 +103,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <ol class="flex-control-nav flex-control-paging"><li><a href="#" class="">1</a></li><li><a href="#" class="">2</a></li><li><a href="#" class="flex-active">3</a></li></ol>
-        </div>
-    </div>
 
-</div>
+            </div>
+        </div><!--.flexslider-->
+    </div>
+</div><!--.section topmargin-sm-->
+

@@ -19,11 +19,10 @@
 }
 
 .slider-main {
-    background: url('../../Content/img/telmar-1.jpg') no-repeat;
+    background: url('../../Content/img/telmar-1-wt-v2.jpg') no-repeat;
     -ms-background-size: cover;
     background-size: cover
 }
-
 
 .slide-review {
     width: 100%; 
@@ -51,4 +50,11 @@
 
 .upperase-main {
     font-weight: 600;
+}
+
+.testimonial-main {
+    position: relative;
+    padding: 60px 0;
+    background-color: #F9F9F9;
+    overflow: hidden;
 }

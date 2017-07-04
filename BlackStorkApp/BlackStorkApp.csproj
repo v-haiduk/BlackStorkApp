@@ -291,6 +291,9 @@
     <Content Include="Content\img\avatar_1.jpg" />
     <Content Include="Content\img\logo-black.png" />
     <Content Include="Content\img\logo-white.png" />
+    <Content Include="Content\img\telmar-1-wt-v.jpg" />
+    <Content Include="Content\img\telmar-1-wt-v2.jpg" />
+    <Content Include="Content\img\telmar-1-wt.jpg" />
     <Content Include="Content\img\telmar-1.jpg" />
     <Content Include="Content\img\telmar-2.jpg" />
     <Content Include="Content\ion.rangeSlider.css" />
