@@ -11,7 +11,7 @@ namespace DAL.EF
         public DbSet<Role> Roles { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
-        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Subscribe> Subscribes { get; set; }
 
         //static BlackStorkContext()
         //{

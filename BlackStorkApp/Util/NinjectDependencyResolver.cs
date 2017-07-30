@@ -29,8 +29,7 @@ namespace BlackStorkApp.Util
             kernel.Bind<IMainService<TopicDTO>>().To<TopicService>();
             kernel.Bind<IMainService<ProductDTO>>().To<ProductService>();
             kernel.Bind<IUserService>().To<UserService>();
-
-            //kernel.Bind<IRepository<Product>>().To<>();
+            kernel.Bind<IMainService<EmailSendingDTO>>().To<EmailSendingService>();
         }
 
         public object GetService(Type serviceType)

@@ -9,12 +9,25 @@ using BLL.DTO;
 using BLL.Infrastructure;
 using BLL.Interfaces;
 using BlackStorkApp.Models;
+using AutoMapper;
 
 namespace BlackStorkApp.Controllers
 {
     public class HomeController : Controller
     {
+        private IMainService<EmailSendingDTO> subscribeService;
+
+        public HomeController(IMainService<EmailSendingDTO> sService)
+        {
+            subscribeService = sService;
+        }
+
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult AboutUs()
         {
             return View();
         }
@@ -70,6 +83,16 @@ namespace BlackStorkApp.Controllers
             message.IsBodyHtml = true;
             
             return message;
+        }
+
+        [HttpPost]
+        public ActionResult SubscribeToNews(EmailSendingModel item)
+        {
+            Mapper.Initialize(configuration => configuration.CreateMap<EmailSendingModel, EmailSendingDTO>());
+            var newEmail = Mapper.Map<EmailSendingModel, EmailSendingDTO>(item);
+            subscribeService.CreateElement(newEmail);
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -207,6 +207,7 @@
     </Compile>
     <Compile Include="Helpers\PaginationHelpers.cs" />
     <Compile Include="Models\ColourModel.cs" />
+    <Compile Include="Models\EmailSendingModel.cs" />
     <Compile Include="Models\FeedbackModel.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\PaginationProductsModel.cs" />
@@ -514,6 +515,8 @@
     <Content Include="Views\Account\MessageSent.cshtml" />
     <Content Include="Views\Account\NoUser.cshtml" />
     <Content Include="Views\Shared\Search.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Admin\Subscribe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

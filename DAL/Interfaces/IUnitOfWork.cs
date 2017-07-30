@@ -13,7 +13,7 @@ namespace DAL.Interfaces
         IRepository<Product> Products { get; }
         IRepository<Topic> Topics { get; }
         IRepository<UserAccount> UsersAccounts { get; }
-        IRepository<UserProfile> UsersProfiles { get; }
+        IRepository<Subscribe> EmailSendings { get; }
         void SaveChanges();
     }
 }

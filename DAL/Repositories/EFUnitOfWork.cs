@@ -15,7 +15,7 @@ namespace DAL.Repositories
         private ProductRepository productRepository;
         private TopicRepository topicRepository;
         private UserAccountRepository userAccountRepository;
-        private UserProfileRepository userProfileRepository;
+        private EmailSendingRepository emailSendingRepository;
 
         public EFUnitOfWork()
         {
@@ -58,15 +58,15 @@ namespace DAL.Repositories
             }
         }
 
-        public IRepository<UserProfile> UsersProfiles
+        public IRepository<Subscribe> EmailSendings
         {
             get
             {
-                if (userAccountRepository == null)
+                if (emailSendingRepository == null)
                 {
-                    userProfileRepository = new UserProfileRepository(db);
+                    emailSendingRepository = new EmailSendingRepository(db);
                 }
-                return userProfileRepository;
+                return emailSendingRepository;
             }
         }
 

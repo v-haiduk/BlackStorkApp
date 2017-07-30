@@ -401,5 +401,14 @@ namespace BlackStorkApp.Controllers
 
             return RedirectToAction("GetAllProducts");
         }
+
+
+        public ActionResult GetSubscribe()
+        {
+            return View("");
+        }
+
+
+     
     }
 }

@@ -60,13 +60,14 @@
     <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="DTO\TopicDTO.cs" />
     <Compile Include="DTO\UserAccountDTO.cs" />
-    <Compile Include="DTO\UserProfileDTO.cs" />
+    <Compile Include="DTO\EmailSendingDTO.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Infrastructure\TransferData.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
     <Compile Include="Interfaces\IMainService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EmailSendingService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\TopicService.cs" />
     <Compile Include="Services\UserService.cs" />

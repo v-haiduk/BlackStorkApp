@@ -59,7 +59,7 @@ namespace DAL.Migrations
                 .PrimaryKey(t => t.UserAccountId);
             
             CreateTable(
-                "dbo.UserProfiles",
+                "dbo.EmailSendings",
                 c => new
                     {
                         UserProfileId = c.Int(nullable: false, identity: true),
@@ -73,7 +73,7 @@ namespace DAL.Migrations
         
         public override void Down()
         {
-            DropTable("dbo.UserProfiles");
+            DropTable("dbo.EmailSendings");
             DropTable("dbo.UserAccounts");
             DropTable("dbo.Topics");
             DropTable("dbo.Roles");
