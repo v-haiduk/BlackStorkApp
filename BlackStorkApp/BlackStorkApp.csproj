@@ -97,7 +97,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
@@ -109,7 +109,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.4.3\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
@@ -118,6 +118,10 @@
     </Reference>
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackifyHttpTracer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=93c44ce23f2048dd, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackifyHttpModule.1.0.28.0\lib\net45\StackifyHttpTracer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -205,15 +209,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FormsAuthenticationService.cs" />
     <Compile Include="Helpers\PaginationHelpers.cs" />
+    <Compile Include="Interfaces\IFormsAuthenticationService.cs" />
     <Compile Include="Models\ColourModel.cs" />
-    <Compile Include="Models\EmailSendingModel.cs" />
     <Compile Include="Models\FeedbackModel.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\PaginationProductsModel.cs" />
     <Compile Include="Models\PaginationTopicsModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\SubscribeModel.cs" />
     <Compile Include="Models\TopicModel.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Models\UserProfileModel.cs" />
@@ -288,15 +294,26 @@
     <Content Include="Content\icheck\flat\yellow.css" />
     <Content Include="Content\icheck\flat\yellow.png" />
     <Content Include="Content\icheck\flat\_all.css" />
+    <Content Include="Content\img\about-us.jpg" />
     <Content Include="Content\img\ava.jpg" />
     <Content Include="Content\img\avatar_1.jpg" />
+    <Content Include="Content\img\backpack.jpg" />
+    <Content Include="Content\img\collar.jpg" />
+    <Content Include="Content\img\demo.jpg" />
+    <Content Include="Content\img\demoB.jpg" />
+    <Content Include="Content\img\fork.jpg" />
+    <Content Include="Content\img\harness-blue.jpg" />
+    <Content Include="Content\img\harness-red.jpg" />
     <Content Include="Content\img\logo-black.png" />
     <Content Include="Content\img\logo-white.png" />
+    <Content Include="Content\img\pull.jpg" />
+    <Content Include="Content\img\sale.png" />
     <Content Include="Content\img\telmar-1-wt-v.jpg" />
     <Content Include="Content\img\telmar-1-wt-v2.jpg" />
     <Content Include="Content\img\telmar-1-wt.jpg" />
     <Content Include="Content\img\telmar-1.jpg" />
     <Content Include="Content\img\telmar-2.jpg" />
+    <Content Include="Content\img\tishkin.jpg" />
     <Content Include="Content\ion.rangeSlider.css" />
     <Content Include="Content\ion.rangeSlider.skinFlat.css" />
     <Content Include="Content\logs\2017-03-06\BlackStorkLogInfo.txt" />
@@ -515,8 +532,11 @@
     <Content Include="Views\Account\MessageSent.cshtml" />
     <Content Include="Views\Account\NoUser.cshtml" />
     <Content Include="Views\Shared\Search.cshtml" />
+    <Content Include="Views\Admin\NewsLetter.cshtml" />
+    <Content Include="Views\Admin\DescriptionOfProduct.cshtml" />
+    <Content Include="Views\Admin\DescriptionOfTopic.cshtml" />
+    <Content Include="Views\Home\MessageSent.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
-    <Content Include="Views\Admin\Subscribe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

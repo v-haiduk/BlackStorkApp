@@ -20,18 +20,26 @@ namespace BlackStorkApp.Controllers
     {
         private IMainService<ProductDTO> productService;
         private IMainService<TopicDTO> topicService;
+        private IMainService<SubscribeDTO> subscribeService;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public AdminController(IMainService<ProductDTO> pService, IMainService<TopicDTO> tService)
+        public AdminController(IMainService<ProductDTO> pService, IMainService<TopicDTO> tService, IMainService<SubscribeDTO> sService)
         {
             productService = pService;
             topicService = tService;
+            subscribeService = sService;
+
         }
 
+        /// <summary>
+        /// The method returns the index page, which contain the login of user
+        /// </summary>
+        /// <returns>The view Index</returns>
         [HttpGet]
         public ActionResult Index()
         {
             Session["name"] = HttpContext.User.Identity.Name;
-            return View();
+            return View("Index");
         }
 
         /// <summary>
@@ -40,7 +48,7 @@ namespace BlackStorkApp.Controllers
         [HttpGet]
         public ActionResult CreateOfProduct()
         {
-            return View();
+            return View("CreateOfProduct");
         }
 
 
@@ -60,6 +68,8 @@ namespace BlackStorkApp.Controllers
             Mapper.Initialize(configuration => configuration.CreateMap<ProductModel, ProductDTO>());
             var newProduct = Mapper.Map<ProductModel, ProductDTO>(product);
             productService.CreateElement(newProduct);
+
+            logger.Info("The new product (" + product.Name +") has been added");
 
             return RedirectToAction("GetAllProducts");
         }
@@ -95,7 +105,7 @@ namespace BlackStorkApp.Controllers
             var productDTOForEdit = productService.GetElement(id);
             Mapper.Initialize(configuration => configuration.CreateMap<ProductDTO, ProductModel>());
             var productForEdit = Mapper.Map<ProductDTO, ProductModel>(productDTOForEdit);
-            
+
             if (productForEdit != null)
             {
                 return View("EditOfProduct",productForEdit);
@@ -125,6 +135,8 @@ namespace BlackStorkApp.Controllers
             Mapper.Initialize(configuration => configuration.CreateMap<ProductModel, ProductDTO>());
             var productForEdit = Mapper.Map<ProductModel, ProductDTO>(product);
             productService.UpdateElement(productForEdit);
+
+            logger.Info("The product (ID: " + product.ProductId + ") has been changed.");
 
             return RedirectToAction("GetAllProducts");
         }
@@ -170,6 +182,20 @@ namespace BlackStorkApp.Controllers
             return productsOnPages;
         }
 
+        /// <summary>
+        /// The method finds the product by id and returns the full-description of product
+        /// </summary>
+        /// <param name="id">The id of product</param>
+        /// <returns>The partial view with data about product</returns>
+        public ActionResult GetDescriptionOfProduct(int id)
+        {
+            ProductDTO productDTO = productService.GetElement(id);
+            Mapper.Initialize(configuration => configuration.CreateMap<ProductDTO, ProductModel>());
+            var productForDisplay = Mapper.Map<ProductDTO, ProductModel>(productDTO);
+
+            return PartialView("DescriptionOfProduct", productForDisplay);
+        }
+
 
         /// <summary>
         /// The method deletes a product, which selected the administrator
@@ -184,6 +210,8 @@ namespace BlackStorkApp.Controllers
             }
             productService.DeleteElement(id.Value);
 
+            logger.Info("The product (ID: " + id + ") has been deleted.");
+
             return RedirectToAction("GetAllProducts");
         }
 
@@ -194,7 +222,7 @@ namespace BlackStorkApp.Controllers
         [HttpGet]
         public ActionResult CreateOfTopic()
         {
-            return View();
+            return View("CreateOfTopic");
         }
 
 
@@ -214,6 +242,9 @@ namespace BlackStorkApp.Controllers
             Mapper.Initialize(configuration => configuration.CreateMap<TopicModel, TopicDTO>());
             var newTopic = Mapper.Map<TopicModel, TopicDTO>(topic);
             topicService.CreateElement(newTopic);
+
+            logger.Info("The new topic (" + topic.Header + ") has been added");
+
 
             return RedirectToAction("GetAllTopics");
         }
@@ -269,6 +300,8 @@ namespace BlackStorkApp.Controllers
             var topicDTOForEdit = Mapper.Map<TopicModel, TopicDTO>(topic);
             topicService.UpdateElement(topicDTOForEdit);
 
+            logger.Info("The topic (ID: " + topic.Header + ") has been changed.");
+
             return RedirectToAction("GetAllTopics");
         }
 
@@ -285,6 +318,20 @@ namespace BlackStorkApp.Controllers
             PaginationTopicsModel topicsWithPagination = CreatePaginationForTopics(allTopics, page);
 
             return View("AllTopics", topicsWithPagination);
+        }
+
+        /// <summary>
+        /// The method finds the topic by id and returns full-description of topic.
+        /// </summary>
+        /// <param name="id">The id of topic</param>
+        /// <returns>The partaial view with data about topic</returns>
+        public ActionResult GetDescriptionOfTopic(int id)
+        {
+            TopicDTO topicDTO = topicService.GetElement(id);
+            Mapper.Initialize(configuration => configuration.CreateMap<TopicDTO, TopicModel>());
+            var topicForDisplay = Mapper.Map<TopicDTO, TopicModel>(topicDTO);
+
+            return PartialView("DescriptionOfTopic", topicForDisplay);
         }
 
         /// <summary>
@@ -329,6 +376,8 @@ namespace BlackStorkApp.Controllers
 
             topicService.DeleteElement(id.Value);
 
+            logger.Info("The topic (ID:" + id + ") has been deleted.");
+
             return RedirectToAction("GetAllTopics");
         }
 
@@ -368,6 +417,11 @@ namespace BlackStorkApp.Controllers
             return File(filePath, fileType, fileName);
         }
 
+        /// <summary>
+        /// The method performs the import product's data from XML
+        /// </summary>
+        /// <param name="file">The xml-file with products</param>
+        /// <returns>The view GetAllProducts</returns>
         [HttpPost]
         public ActionResult ImportFromXML(HttpPostedFileBase file)
         {
@@ -377,14 +431,18 @@ namespace BlackStorkApp.Controllers
             }
             string filePath = Server.MapPath("~/Content/documents/" + Path.GetFileName(file.FileName));
             file.SaveAs(filePath);
-
-            
+        
             TransferData export = new TransferData(productService);
             export.ImportFromXML(filePath);
 
             return RedirectToAction("GetAllProducts");
         }
 
+        /// <summary>
+        /// The method performs the import product's data from XLSX
+        /// </summary>
+        /// <param name="file">The xlsx-file with products</param>
+        /// <returns>The view GetAllProducts</returns>
         [HttpPost]
         public ActionResult ImportFromXLSX(HttpPostedFileBase file)
         {
@@ -402,13 +460,31 @@ namespace BlackStorkApp.Controllers
             return RedirectToAction("GetAllProducts");
         }
 
-
-        public ActionResult GetSubscribe()
+        /// <summary>
+        /// The method gets list of subscribers
+        /// </summary>
+        /// <returns>The view NewsLetter with list of subscribers</returns>
+        public ActionResult NewsLetter()
         {
-            return View("");
+            IEnumerable<SubscribeDTO> emailDTOs = subscribeService.GetAllElements();
+            Mapper.Initialize(configuration => configuration.CreateMap<SubscribeDTO, SubscribeModel>());
+            var allEmails = Mapper.Map<IEnumerable<SubscribeDTO>, IEnumerable<SubscribeModel>>(emailDTOs);
+
+            return View("NewsLetter", allEmails);
         }
 
+        /*edit this method!*/
+        [HttpPost]
+        public ActionResult NewsLetter(SubscribeModel email)
+        {
+            var b = email.SubscribeId;
+            Mapper.Initialize(configuration => configuration.CreateMap<SubscribeModel, SubscribeDTO>());
+            var subscribeDTO = Mapper.Map<SubscribeModel, SubscribeDTO>(email);
+            subscribeService.CreateElement(subscribeDTO);
 
-     
+            logger.Info("The new subscribe (" + email.Email + ") has been added");
+
+            return RedirectToAction("NewsLetter");
+        }
     }
 }

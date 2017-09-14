@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
+    /// <summary>
+    /// The model of subcribe to news
+    /// </summary>
     public class Subscribe
     {
         public int SubscribeId { get; set; }

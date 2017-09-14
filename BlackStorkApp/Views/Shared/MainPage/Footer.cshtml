@@ -38,18 +38,7 @@
                 <h4>Подписка</h4>
                 <p>Подпишитесь на наши последние новости, чтобы первыми получать информацию о новых товарах или скидках.</p>
                 <div class="widget-subscribe-form-result"></div>
-                @using (Html.BeginForm("SubscribeToNews", "Home", FormMethod.Post))
-                {
-                    <div class="input-group divcenter">
-                        <span class="input-group-addon"><i class="icon-email2"></i></span>
-                        <input type="email" id="widget-subscribe-form-email" name="email" class="form-control required email" placeholder="Введите Ваш e-mail">
-
-                        <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit">Подписаться</button>
-                        </span>
-                    </div>
-                }
-                @*<form id="widget-subscribe-form" action="#" role="form" method="post" class="nobottommargin">
+                <form id="widget-subscribe-form" action="#" role="form" method="post" class="nobottommargin">
                     <div class="input-group divcenter">
                         <span class="input-group-addon"><i class="icon-email2"></i></span>
                         <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Введите Ваш e-mail">
@@ -57,7 +46,7 @@
                             <button class="btn btn-success" type="submit">Подписаться</button>
                         </span>
                     </div>
-                </form>*@
+                </form>
             </div>
         </div>
 

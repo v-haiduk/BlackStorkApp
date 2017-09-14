@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Infrastructure;
 using DAL.EF;
 using DAL.Entities;
 using DAL.Interfaces;
@@ -15,7 +16,9 @@ namespace DAL.Repositories
         private ProductRepository productRepository;
         private TopicRepository topicRepository;
         private UserAccountRepository userAccountRepository;
-        private EmailSendingRepository emailSendingRepository;
+        private UserProfileRepository userProfileRepository;
+        private SubscribeRepository subscribeRepository;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         public EFUnitOfWork()
         {
@@ -58,21 +61,44 @@ namespace DAL.Repositories
             }
         }
 
-        public IRepository<Subscribe> EmailSendings
+        public IRepository<UserProfile> UsersProfiles
         {
             get
             {
-                if (emailSendingRepository == null)
+                if (userAccountRepository == null)
                 {
-                    emailSendingRepository = new EmailSendingRepository(db);
+                    userProfileRepository = new UserProfileRepository(db);
                 }
-                return emailSendingRepository;
+                return userProfileRepository;
             }
         }
 
-        public void SaveChanges()
+        public IRepository<Subscribe> Subscribs
         {
-            db.SaveChanges();
+            get
+            {
+                if (subscribeRepository == null)
+                {
+                    subscribeRepository = new SubscribeRepository(db);
+                }
+                return subscribeRepository;
+            }
+            
+        }
+
+        /// <summary>
+        /// The method saves all changes. 
+        /// </summary>
+        public void SaveChanges()
+        {           
+            try
+            {
+                db.SaveChanges();
+            }
+            catch(DbUpdateException ex)
+            {
+                logger.Error("The error occurred while saving changes to the database: {0}", ex);
+            }           
         }
 
         //Implementation of combined template

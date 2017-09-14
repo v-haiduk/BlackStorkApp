@@ -1,0 +1,44 @@
+2017-09-13 12:39:08.5765|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-09-13 12:44:20.9688|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 12:44:28.9909|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 12:44:40.6030|INFO|BlackStorkApp.Controllers.AdminController|был добавлен новый продукт!
+2017-09-13 12:44:42.4231|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:20:56.8773|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:21:01.5244|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:21:24.8096|INFO|BlackStorkApp.Controllers.AdminController|был добавлен новый продукт!
+2017-09-13 14:21:26.1811|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:28:06.4985|INFO|BlackStorkApp.MvcApplication|Application End
+2017-09-13 14:28:27.9452|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-09-13 14:29:57.5531|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:32:24.1843|INFO|BlackStorkApp.Controllers.AdminController|The new product (Дождевик) has been added
+2017-09-13 14:32:24.4439|INFO|BlackStorkApp.Controllers.AdminController|The new product (Дождевик) has been added
+2017-09-13 14:32:24.5239|INFO|BlackStorkApp.Controllers.AdminController|The new product (Дождевик) has been added
+2017-09-13 14:32:24.6739|INFO|BlackStorkApp.Controllers.AdminController|The new product (Дождевик) has been added
+2017-09-13 14:32:26.5066|INFO|BlackStorkApp.Controllers.AdminController|The new product (Дождевик) has been added
+2017-09-13 14:32:28.1705|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:32:35.6665|INFO|BlackStorkApp.Controllers.AdminController|The product (ID: 6) has been deleted.
+2017-09-13 14:32:36.6284|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:32:41.0650|INFO|BlackStorkApp.Controllers.AdminController|The product (ID: 8) has been deleted.
+2017-09-13 14:32:42.0218|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:32:47.0882|INFO|BlackStorkApp.Controllers.AdminController|The product (ID: 9) has been deleted.
+2017-09-13 14:32:47.9699|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:32:51.2420|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:33:01.5187|INFO|BlackStorkApp.Controllers.AdminController|The product (ID: 1) has been changed.
+2017-09-13 14:33:02.4045|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:33:23.2816|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:33:30.8225|INFO|BlackStorkApp.Controllers.AdminController|The new topic (NEWS 1) has been added
+2017-09-13 14:33:31.8182|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:33:37.9308|INFO|BlackStorkApp.Controllers.AdminController|The topic (ID:5) has been deleted.
+2017-09-13 14:33:38.8619|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:33:41.2559|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 14:33:50.5066|INFO|BlackStorkApp.Controllers.AdminController|The topic (ID: В продаже появились шлейки в новом цвете! ) has been changed.
+2017-09-13 14:33:51.1872|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 15:48:59.9948|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 15:52:06.1875|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-09-13 15:59:53.0500|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 16:15:12.4669|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 16:15:24.3614|INFO|BlackStorkApp.Controllers.AdminController|The new product (Бандана) has been added
+2017-09-13 16:15:26.9360|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 16:16:13.5133|INFO|BlackStorkApp.Controllers.AdminController|The product (ID: 6) has been deleted.
+2017-09-13 16:16:14.6574|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-13 16:19:04.6317|INFO|BlackStorkApp.MvcApplication|Application End

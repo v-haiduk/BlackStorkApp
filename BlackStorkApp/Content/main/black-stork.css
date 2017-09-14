@@ -48,6 +48,23 @@
     height: 5%;
 }
 
+p.main-block-margin {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.about-us {
+    width:100%;
+}
+
+.about-us img {
+    width: 100%;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 8% !important;
+}
+
 .upperase-main {
     font-weight: 600;
 }
@@ -57,4 +74,12 @@
     padding: 60px 0;
     background-color: #F9F9F9;
     overflow: hidden;
+}
+
+.feedback-controls input {
+    margin-bottom: 1%;
+}
+
+.feedback-controls textarea {
+    margin-bottom: 1%;
 }

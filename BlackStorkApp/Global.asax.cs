@@ -26,25 +26,25 @@ namespace BlackStorkApp
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        public void Init()
-        {
-            logger.Info("Application Init");
-        }
+        //public void Init()
+        //{
+        //    logger.Info("Application Init");
+        //}
 
-        public void Dispose()
-        {
-            logger.Info("Application Dispose");
-        }
+        //public void Dispose()
+        //{
+        //    logger.Info("Application Dispose");
+        //}
 
-        protected void Application_Error()
-        {
-            logger.Info("Application Error");
-        }
+        //protected void Application_Error()
+        //{
+        //    logger.Info("Application Error");
+        //}
 
 
-        protected void Application_End()
-        {
-            logger.Info("Application End");
-        }
+        //protected void Application_End()
+        //{
+        //    logger.Info("Application End");
+        //}
     }
 }

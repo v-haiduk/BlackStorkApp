@@ -16,32 +16,32 @@
 
     <div class="x_content">
         <div class="col-md-12">
-            <form class="form-horizontal form-label-left" method="post" role="form" enctype="multipart/form-data">
-                <input type="hidden" name="ProductId"/>
-                <input type="hidden" name="DateOfCreate" value="@DateTime.Now"/>
-
+            @using (Html.BeginForm( "CreateOfProduct","Admin", FormMethod.Post, new { @class= "form-horizontal form-label-left", enctype = "multipart/form-data" } ))
+            {
+                <input type="hidden" name="ProductId" />
+                <input type="hidden" name="DateOfCreate" value="@DateTime.Now" />
                 <div class="form-group">
                     <label>Название *</label>
-                    <input class="form-control" type="text" name="Name" placeholder="Введите название товара..." required/>
+                    <input class="form-control" type="text" name="Name" placeholder="Введите название товара..." required />
                 </div>
-
                 <div class="form-group">
                     <label>Описание *</label>
                     <textarea class="resizable_textarea form-control" type="text" name="Description"
                               placeholder="Введите описание товара..." rows="10" required></textarea>
                 </div>
-                <input class="btn btn-default" type="file" name="photo" placeholder="main photo"/>
-                <input type="hidden" name="PathForMainPhoto" placeholder="other photo"/>
-                <input type="hidden" name="PathForFolderWithPhotos" placeholder="other photo"/>
-
+                <input class="btn btn-default" type="file" name="photo" placeholder="main photo" />
+                <input type="hidden" name="PathForMainPhoto" placeholder="other photo" />
+                <input type="hidden" name="PathForFolderWithPhotos" placeholder="other photo" />
+                
                 <div class="ln_solid"></div>
+                
                 <div class="form-group" id="form">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                        <input class="btn btn-primary" type="submit" vale="Сохранить"/>
+                        <input class="btn btn-primary" type="submit" vale="Сохранить" />
                         <button type="submit" class="btn btn-success" onclick="form.reset()">Отменить</button>
                     </div>
                 </div>
-            </form>
+            }
         </div>
     </div>
 </div>

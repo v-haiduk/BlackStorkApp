@@ -14,109 +14,37 @@ namespace DAL.EF
         {
             context.Topics.Add(new Topic
             {
-                Header = "NEWS 1",
+                Header = "Мы запустили новый веб-сайт!",
                 DateOfCreate = DateTime.Now,
                 Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
-                PathForMainPhoto = "/Content/img/demo.jpg",
+                PathForMainPhoto = null,
                 PathForFolderWithPhotos = null
             });
 
             context.Topics.Add(new Topic
             {
-                Header = "NEWS 2",
+                Header = "В продаже появились шлейки в новом цвете! ",
                 DateOfCreate = DateTime.Now,
                 Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
-                PathForMainPhoto = "/Content/img/demo.jpg",
+                PathForMainPhoto = "/Content/img/harness-red.jpg",
                 PathForFolderWithPhotos = null
             });
 
             context.Topics.Add(new Topic
             {
-                Header = "NEWS 3",
+                Header = "Распродажа в честь открытия сайта",
                 DateOfCreate = DateTime.Now,
                 Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
-                PathForMainPhoto = "/Content/img/demo.jpg",
+                PathForMainPhoto = "/Content/img/sale.png",
                 PathForFolderWithPhotos = null
             });
 
             context.Topics.Add(new Topic
             {
-                Header = "NEWS 4",
+                Header = "Виталий Тишник в снаряжении Black Stork прошел Беренгию! ",
                 DateOfCreate = DateTime.Now,
                 Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Topics.Add(new Topic
-            {
-                Header = "NEWS 5",
-                DateOfCreate = DateTime.Now,
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Topics.Add(new Topic
-            {
-                Header = "NEWS 6",
-                DateOfCreate = DateTime.Now,
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Topics.Add(new Topic
-            {
-                Header = "NEWS 7",
-                DateOfCreate = DateTime.Now,
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Topics.Add(new Topic
-            {
-                Header = "NEWS 8",
-                DateOfCreate = DateTime.Now,
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Topics.Add(new Topic
-            {
-                Header = "NEWS 9",
-                DateOfCreate = DateTime.Now,
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Topics.Add(new Topic
-            {
-                Header = "NEWS 10",
-                DateOfCreate = DateTime.Now,
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Topics.Add(new Topic
-            {
-                Header = "NEWS 11",
-                DateOfCreate = DateTime.Now,
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Topics.Add(new Topic
-            {
-                Header = "NEWS 12",
-                DateOfCreate = DateTime.Now,
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a",
-                PathForMainPhoto = "/Content/img/demo.jpg",
+                PathForMainPhoto = "/Content/img/tishkin.jpg",
                 PathForFolderWithPhotos = null
             });
 
@@ -125,121 +53,50 @@ namespace DAL.EF
             {
                 Name = "Шлейка x-back",
                 Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
+                PathForMainPhoto = "/Content/img/harness-blue.jpg",
                 PathForFolderWithPhotos = null
             });
 
             context.Products.Add(new Product
             {
-                Name = "Шлейка h-back",
+                Name = "Вилка",
                 Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
+                PathForMainPhoto = "/Content/img/fork.jpg",
                 PathForFolderWithPhotos = null
             });
 
             context.Products.Add(new Product
             {
-                Name = "Нарты спортивные",
+                Name = "Потяг",
                 Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
+                PathForMainPhoto = "/Content/img/pull.jpg",
                 PathForFolderWithPhotos = null
             });
 
             context.Products.Add(new Product
             {
-                Name = "Сумка для снаряжения",
+                Name = "Рюкзак",
                 Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
+                PathForMainPhoto = "/Content/img/backpack.jpg",
                 PathForFolderWithPhotos = null
             });
 
             context.Products.Add(new Product
             {
-                Name = "Дождевик",
+                Name = "Ошейник",
                 Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Products.Add(new Product
-            {
-                Name = "Попона",
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Products.Add(new Product
-            {
-                Name = "Тапочки",
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Products.Add(new Product
-            {
-                Name = "Шлейка h-back",
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Products.Add(new Product
-            {
-                Name = "Шлейка грузовая",
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Products.Add(new Product
-            {
-                Name = "Нарты грузовые",
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Products.Add(new Product
-            {
-                Name = "Сумка для формы",
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Products.Add(new Product
-            {
-                Name = "Дождевик в стиле БАТЭ",
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Products.Add(new Product
-            {
-                Name = "Бандана",
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
-                PathForFolderWithPhotos = null
-            });
-
-            context.Products.Add(new Product
-            {
-                Name = "Тапочки флисовые",
-                Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.",
-                PathForMainPhoto = "/Content/img/demo.jpg",
+                PathForMainPhoto = "/Content/img/collar.jpg",
                 PathForFolderWithPhotos = null
             });
 
 
             context.UserAccounts.Add(new UserAccount {Login = "v-haiduk@yandex.ru", HashOfPassword = "123" });
             context.UserAccounts.Add(new UserAccount {Login = "v-haiduk@hotmail.com", HashOfPassword = "12345" });
+            context.UserAccounts.Add(new UserAccount { Login = "test@test.com", HashOfPassword = "12345" });
 
-            context.EmailSendings.Add(new EmailSending { Email = "test1@yandex.ru"});
-            context.EmailSendings.Add(new EmailSending { Email = "test2@yandex.ru" });
-            context.EmailSendings.Add(new EmailSending { Email = "test3@yandex.ru" });
+            context.Subcribs.Add(new Subscribe { Email = "ivanov@mail.ru" });
+            context.Subcribs.Add(new Subscribe { Email = "petrov@mail.ru" });
+            context.Subcribs.Add(new Subscribe { Email = "sidorov@mail.ru" });
 
 
             base.Seed(context);

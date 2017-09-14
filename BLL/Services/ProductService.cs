@@ -64,7 +64,6 @@ namespace BLL.Services
             }
 
             Mapper.Initialize(configuration => configuration.CreateMap<Product, ProductDTO>());
-
             return Mapper.Map<Product, ProductDTO>(product);
         }
 

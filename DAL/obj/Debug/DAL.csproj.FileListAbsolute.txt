@@ -15,4 +15,23 @@ c:\users\violetta haiduk\documents\visual studio 2015\Projects\BlackStorkApp\DAL
 C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.Migrations.MigrateDB_with_new_field.resources
 C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.Migrations.updateUsers.resources
 C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.Migrations.updateUsers_2.resources
-C:\Users\Violetta Haiduk\Documents\Visual Studio 2015\Projects\BlackStorkApp\DAL\obj\Debug\DAL.Migrations.updatedbwithoutemailsending.resources
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\bin\Debug\DAL.dll.config
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\bin\Debug\DAL.dll
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\bin\Debug\DAL.pdb
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\bin\Debug\Ninject.dll
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\bin\Debug\Ninject.xml
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\obj\Debug\DAL.Migrations.MigrateDB_10.resources
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\obj\Debug\DAL.Migrations.MigrateDB_with_new_field.resources
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\obj\Debug\DAL.Migrations.updateUsers.resources
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\obj\Debug\DAL.Migrations.updateUsers_2.resources
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\obj\Debug\DAL.dll
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\obj\Debug\DAL.pdb
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\obj\Debug\DAL.Migrations.addsubscribe.resources
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\bin\Debug\NLog.dll
+C:\Users\Violetta Haiduk\Desktop\BlackStorkApp-master\BlackStorkApp-master\DAL\bin\Debug\NLog.xml

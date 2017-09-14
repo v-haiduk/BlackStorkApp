@@ -17,6 +17,13 @@
             <p>Перечень всех статей и новостей, содержащихся в блоге</p>
         </div>
         <div class="x_content">
+
+            <!---place for modal window-->
+            <div id="modDialog" class="modal fade">
+                <div id="dialogContent" class="modal-dialog"></div>
+            </div>
+            <!---/.for modal window-->
+
             <table class="table table-bordered">
                 <thead>
                 <tr>
@@ -34,23 +41,20 @@
                 {
                     <tr>
                         <td> @currentTopic.TopicId </td>
+                        <td class="product-preview"> <img src="@currentTopic.PathForMainPhoto" /> </td>
                         <td> @currentTopic.Header </td>
-                        <td> @currentTopic.Description </td>
                         <td> @currentTopic.DateOfCreate </td>
-                        <td>
-                            <form action="/Blog/GetDescriptionOfNews" method="post">
-                                <input type="hidden" name="id" value="@currentTopic.TopicId"/>
-                                <button type="submit" class="btn btn-link">
-                                    <span class="glyphicon glyphicon-open"></span>
-                                </button>
-                            </form>
+                        <td class="table-controlles">
+                            <a href="@Url.Action("GetDescriptionOfTopic", "Admin", new { id = currentTopic.TopicId } )" class="btn btn-link topicItem">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </a>
                         </td>
-                        <td>
-                            <a href="/Admin/EditOfTopic/@currentTopic.TopicId" class="btn btn-link">
+                        <td class="table-controlles"> 
+                            <a href="@Url.Action("EditOfTopic", "Admin", new { id = currentTopic.TopicId })" class="btn btn-link">
                                 <span class="glyphicon glyphicon-edit"></span>
                             </a>
                         </td>
-                        <td>
+                        <td class="table-controlles">
                             @using (Html.BeginForm("DeleteOfTopic", "Admin", FormMethod.Post))
                             {
                                 <input type="hidden" name="id" value="@currentTopic.TopicId" />
@@ -63,6 +67,20 @@
                 }
                 </tbody>
             </table>
+
+            <script type="text/javascript">
+                $(function () {
+                    $.ajaxSetup({ cache: false });
+                    $(".topicItem").click(function (e) {
+                        e.preventDefault();
+                        $.get(this.href, function (data) {
+                            $('#dialogContent').html(data);
+                            $('#modDialog').modal('show');
+                        });
+                    });
+                })
+            </script>
+
             <div class="btn-group">
                 @Html.PageLinks(Model.Page, x => Url.Action("GetAllTopics", new {page = x}))
             </div>

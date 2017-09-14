@@ -1,0 +1,22 @@
+﻿@model BlackStorkApp.Models.TopicModel
+
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title">Статья из блога</h3>
+    </div>
+    <div class="modal-body">
+        <div class="modal-window">
+            <img src="@Model.PathForMainPhoto" />
+        </div>
+        <h4><b>Название:</b></h4>
+        <p> @Html.DisplayFor(model => model.Header) </p>
+        <h4><b>Описание:</b></h4>
+        <p> @Html.DisplayFor(model => model.Description ) </p>
+    </div>
+</div>
+
+

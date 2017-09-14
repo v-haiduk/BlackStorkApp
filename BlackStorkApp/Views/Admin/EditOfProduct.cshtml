@@ -16,33 +16,38 @@
 
         <div class="x_content">
             <div class="col-md-12">
-                <form class="form-horizontal form-label-left" method="post" role="form" id="form" enctype="multipart/form-data">
-                    <input type="hidden" name="ProductId" value="@Model.ProductId"/>
-                    <input type="hidden" name="DateOfCreate" value="@DateTime.Now"/>
+                @using (Html.BeginForm("EditOfProduct", "Admin", FormMethod.Post, new { @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
+                {
+                    <input type="hidden" name="ProductId" value="@Model.ProductId" />
+                    <input type="hidden" name="DateOfCreate" value="@DateTime.Now" />
 
                     <div class="form-group">
                         <label>Название *</label>
-                        <input class="form-control" type="text" name="Name" value="@Model.Name" required/>
+                        <input class="form-control" type="text" name="Name" value="@Model.Name" required />
                     </div>
 
                     <div class="form-group">
                         <label>Описание *</label>
                         <textarea class="resizable_textarea form-control" type="text" name="Description"
-                                  rows="10" required> @Model.Description </textarea>
+                                  rows="10" required>
+                            @Model.Description
+                        </textarea>
                     </div>
 
-                    <input class="btn btn-default" type="file" name="photo" placeholder="main photo" />
-                    <input type="hidden" name="PathForMainPhoto" value="@Model.PathForMainPhoto"/>
-                    <input type="hidden" name="PathForFolderWithPhotos" value="@Model.PathForFolderWithPhotos"/>
+                    <input class="btn btn-default" type="file" name="photo" value="Изменить фото" />
+                    <p>*Для изменения главного изображени, загрузите новое фото.</p>
+                    <input type="hidden" name="PathForMainPhoto" value="@Model.PathForMainPhoto" />
+                    <input type="hidden" name="PathForFolderWithPhotos" value="@Model.PathForFolderWithPhotos" />
 
                     <div class="ln_solid"></div>
+
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                             <button class="btn btn-primary" type="submit">Сохранить</button>
                             <button class="btn btn-success" type="submit" onclick="form().reset">Отменить</button>
                         </div>
                     </div>
-                </form>
+                }
             </div>
         </div>
     </div>
