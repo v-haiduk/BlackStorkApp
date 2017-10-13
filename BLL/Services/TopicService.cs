@@ -73,14 +73,8 @@ namespace BLL.Services
         /// <param name="item">Thew new topic</param>
         public void CreateElement(TopicDTO element)
         {
-            Topic topic = new Topic
-            {
-                Header = element.Header,
-                Description = element.Description,
-                DateOfCreate = element.DateOfCreate,
-                PathForMainPhoto = element.PathForMainPhoto,
-                PathForFolderWithPhotos = element.PathForFolderWithPhotos
-            };
+            Mapper.Initialize(configuration => configuration.CreateMap<TopicDTO, Topic>());
+            var topic = Mapper.Map<TopicDTO, Topic>(element);
 
             uow.Topics.Create(topic);
             uow.SaveChanges();
@@ -92,15 +86,8 @@ namespace BLL.Services
         /// <param name="item">The updated topic</param>
         public void UpdateElement(TopicDTO element)
         {
-            Topic topic = new Topic
-            {
-                TopicId = element.TopicId,
-                Header = element.Header,
-                Description = element.Description,
-                DateOfCreate = element.DateOfCreate,
-                PathForMainPhoto = element.PathForMainPhoto,
-                PathForFolderWithPhotos = element.PathForFolderWithPhotos
-            };
+            Mapper.Initialize(configuration => configuration.CreateMap<TopicDTO, Topic>());
+            var topic = Mapper.Map<TopicDTO, Topic>(element);
 
             uow.Topics.Update(topic);
             uow.SaveChanges();

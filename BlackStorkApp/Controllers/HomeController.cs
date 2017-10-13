@@ -15,21 +15,32 @@ namespace BlackStorkApp.Controllers
 {
     public class HomeController : Controller
     {
-        private IMainService<EmailSendingDTO> subscribeService;
+        private IMainService<SubscribeDTO> subscribeService;
 
-        public HomeController(IMainService<EmailSendingDTO> sService)
+        public HomeController(IMainService<SubscribeDTO> sService)
         {
             subscribeService = sService;
         }
 
+        public HomeController() { }
+
+
+        /// <summary>
+        /// The method returns a view of Main-page
+        /// </summary>
+        /// <returns>The view of main-page</returns>
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
+        /// <summary>
+        /// The method returns a view of AboutUs-page, which contain description of company
+        /// </summary>
+        /// <returns>The view of aboutUs-page</returns>
         public ActionResult AboutUs()
         {
-            return View();
+            return View("AboutUs");
         }
 
         /// <summary>
@@ -39,12 +50,11 @@ namespace BlackStorkApp.Controllers
         [HttpGet]
         public ActionResult Feedback()
         {
-            return View();
+            return View("Feedback");
         }
 
         /// <summary>
         /// The method organizes a feedback. Gmail use as a smtp-server.
-        /// Warning: Before starting it is necessary to change the password!
         /// </summary>
         /// <param name="feedback"></param>
         /// <returns>The view with forms of feedback</returns>
@@ -52,19 +62,12 @@ namespace BlackStorkApp.Controllers
         public ActionResult Feedback(FeedbackModel feedback)
         {
             string email = "test.blackstork@gmail.com";
-            string password = "02072017tb";
 
-            var loginInfo = new NetworkCredential(email, password);
-            var smtpClient = new SmtpClient("smtp.gmail.com", 587);
-
+            SmtpClient smtpClient = new SmtpClient();
             var message = CreateMessage(feedback, email);
-            
-            smtpClient.EnableSsl = true;
-            smtpClient.UseDefaultCredentials = false;
-            smtpClient.Credentials = loginInfo;
             smtpClient.Send(message);
 
-            return View();
+            return PartialView("MessageSent");
         }
 
         /// <summary>
@@ -85,14 +88,19 @@ namespace BlackStorkApp.Controllers
             return message;
         }
 
+        /// <summary>
+        /// The method adds the new e-mail in list of newsletter
+        /// </summary>
+        /// <param name="item">The new email</param>
+        /// <returns>The view of main-page</returns>
         [HttpPost]
-        public ActionResult SubscribeToNews(EmailSendingModel item)
+        public ActionResult SubscribeToNews(SubscribeModel item)
         {
-            Mapper.Initialize(configuration => configuration.CreateMap<EmailSendingModel, EmailSendingDTO>());
-            var newEmail = Mapper.Map<EmailSendingModel, EmailSendingDTO>(item);
+            Mapper.Initialize(configuration => configuration.CreateMap<SubscribeModel, SubscribeDTO>());
+            var newEmail =  Mapper.Map<SubscribeModel, SubscribeDTO>(item);
             subscribeService.CreateElement(newEmail);
 
-            return RedirectToAction("Index");
+            return View("Index");
         }
     }
 }

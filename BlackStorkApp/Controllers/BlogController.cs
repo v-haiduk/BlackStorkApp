@@ -34,7 +34,7 @@ namespace BlackStorkApp.Controllers
 
             PaginationTopicsModel topicsWithPagination = CreatePaginationForTopics(topicsForDisplay, page);
 
-            return View(topicsWithPagination);
+            return View("Index", topicsWithPagination);
         }
 
         /// <summary>

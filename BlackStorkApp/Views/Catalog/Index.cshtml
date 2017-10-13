@@ -20,28 +20,28 @@
                 <!-- Shop -->
                 <div id="shop" class="shop product-1 clearfix">
                     @foreach (BlackStorkApp.Models.ProductModel currentProduct in Model.Products)
-                {
-                <div class="product clearfix">
-                    <div class="product-image">
-                        <a href="#"><img src="@currentProduct.PathForMainPhoto" alt="Product"></a>
-                    </div>
-                    <div class="product-desc">
-                        <div class="product-title">
-                            <h3>
-                                <a href="#"> @currentProduct.Name </a>
-                            </h3>
+                    {
+                    <div class="product clearfix">
+                        <div class="product-image">
+                            <a href="#"><img src="@currentProduct.PathForMainPhoto" alt="Product"></a>
                         </div>
+                        <div class="product-desc">
+                            <div class="product-title">
+                                <h3 class="margin-bottom-10">
+                                    <a href="#"> @currentProduct.Name </a>
+                                </h3>
+                            </div>
 
-                        <p> @currentProduct.Description </p>
+                            <p class="margin-bottom-10"> @currentProduct.Description </p>
 
-                        @using (Html.BeginForm("Product", "Catalog", FormMethod.Post))
-                            {
-                            <input type="hidden" name="id" value="@currentProduct.ProductId" />
-                            <input type="submit" value="Подробнее" class="btn btn-default" />
-                            }
+                            @using (Html.BeginForm("Product", "Catalog", FormMethod.Post))
+                                {
+                                <input type="hidden" name="id" value="@currentProduct.ProductId" />
+                                <input type="submit" value="Подробнее" class="btn btn-default" />
+                                }
+                        </div>
                     </div>
-                </div>
-                }
+                    }
                 </div><!-- #shop end -->
 
                 <div class="btn-group">

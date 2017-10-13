@@ -11,6 +11,7 @@ using BLL.DTO;
 using BLL.Infrastructure;
 using BLL.Interfaces;
 using BlackStorkApp.Models;
+using BlackStorkApp.Interfaces;
 using AutoMapper;
 using BlackStorkApp.Controllers;
 
@@ -20,18 +21,21 @@ namespace BlackStorkApp.Controllers
     public class AccountController : Controller
     {
         private IUserService userService;
+        private readonly IFormsAuthenticationService formsAuthentication;
 
-        public AccountController(IUserService service)
+
+        public AccountController(IUserService service, IFormsAuthenticationService authentification)
         {
             userService = service;
+            formsAuthentication = authentification;
         }
 
-        //[Authorize]
-        //public ActionResult Index()
-        //{
-        //    return View("Index");
-        //}
-
+        /// <summary>
+        /// The method returns the view of Login or Index, if the user unauthenticated, 
+        /// he will redirect to the Login page. If user is authenticated, 
+        /// he will redirect to the Index page
+        /// </summary>
+        /// <returns>The views of login or index</returns>
         [AllowAnonymous]
         [HttpGet]
         public ActionResult Login()
@@ -40,9 +44,14 @@ namespace BlackStorkApp.Controllers
             {
                 return RedirectToAction("Index", "Admin");
             }
-            return View();
+            return View("Login");
         }
 
+        /// <summary>
+        /// The method performs an authorization of user
+        /// </summary>
+        /// <param name="user">The user-data for authenticated</param>
+        /// <returns>The views of login or index</returns>
         [AllowAnonymous]
         [HttpPost]
         public ActionResult Login(UserAccountModel user)
@@ -55,33 +64,43 @@ namespace BlackStorkApp.Controllers
             {
                 if (searchResults.HashOfPassword == passwordHash)
                 {
-                    FormsAuthentication.SetAuthCookie(user.Login, true);
-                    return RedirectToAction("Index", "Admin" );
+                    formsAuthentication.SetAuthCookie(user.Login, true);
+                    return RedirectToAction("Index", "Admin");
                 }
             }
 
             ModelState.AddModelError("", "Ошибка! Пожалуйста, проверьте ввееденные данные!");
 
-            return View(user);
+            return View("Login", user);
         }
 
         /// <summary>
         /// The method close's the session
         /// </summary>
         [Authorize]
-        public ActionResult LogOff()
+        public ActionResult LogOff(UserAccountModel user)
         {
-            FormsAuthentication.SignOut();
+            formsAuthentication.SignOut();
 
             return RedirectToAction("Login");
         }
 
+        /// <summary>
+        /// The method returns the page for reset of password
+        /// </summary>
+        /// <returns>The view of reset password</returns>
         [HttpGet]
         public ActionResult ResetPassword()
         {
-            return View();
+            return View("ResetPassword");
         }
 
+        /// <summary>
+        /// The method performs the operations for reset of password and 
+        /// sends the message for creating the new password
+        /// </summary>
+        /// <param name="login">The login of user</param>
+        /// <returns>The view of messageSent of noUser</returns>
         [HttpPost]
         public ActionResult ResetPassword(string login)
         {
@@ -103,10 +122,13 @@ namespace BlackStorkApp.Controllers
             return View("MessageSent");
         }
 
+        /// <summary>
+        /// The method creates the message for changing password
+        /// </summary>
+        /// <param name="loginForSendMessage">The login of user, which get the message</param>
         private void CreateMessage(string loginForSendMessage)
         {
             string emailOfSender = "test.blackstork@gmail.com";
-            string password = "02072017tb"; 
 
             var sender = new MailAddress(emailOfSender);
             var receiver = new MailAddress(loginForSendMessage);
@@ -119,23 +141,16 @@ namespace BlackStorkApp.Controllers
                 IsBodyHtml = true
             };
 
-            SetupOfSend(emailOfSender, password, message);
-        }
-
-        private void SetupOfSend(string emailOfSender, string password, MailMessage message)
-        {
-            var loginInfo = new NetworkCredential(emailOfSender, password);
-            var smtpClient = new SmtpClient("smtp.gmail.com", 587)
-            {
-                EnableSsl = true,
-                UseDefaultCredentials = false,
-                Credentials = loginInfo
-            };
-
+            SmtpClient smtpClient = new SmtpClient();
             smtpClient.Send(message);
+
         }
 
-
+        /// <summary>
+        /// The method returns the page for recovery of password
+        /// </summary>
+        /// <param name="loginForPasswordRecovery">The login of user</param>
+        /// <returns>The view password recovery</returns>
         [HttpGet]
         public ActionResult PasswordRecovery(string loginForPasswordRecovery)
         {
@@ -151,11 +166,16 @@ namespace BlackStorkApp.Controllers
             }
 
             Mapper.Initialize(configuration => configuration.CreateMap<UserAccountDTO, UserAccountModel>());
-            var userForEdit =  Mapper.Map<UserAccountDTO, UserAccountModel>(userDTOForEdit);
+            var userForEdit = Mapper.Map<UserAccountDTO, UserAccountModel>(userDTOForEdit);
 
-            return View(userForEdit);
+            return View("PasswordRecovery", userForEdit);
         }
 
+        /// <summary>
+        /// The method resets the old password and saves the new password
+        /// </summary>
+        /// <param name="user">The user-data, which contain the new password</param>
+        /// <returns>The view login</returns>
         [HttpPost]
         public ActionResult PasswordRecovery(UserAccountModel user)
         {
@@ -171,6 +191,6 @@ namespace BlackStorkApp.Controllers
             return RedirectToAction("Login");
         }
 
-   
+
     }
 }

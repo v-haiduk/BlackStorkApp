@@ -28,14 +28,14 @@
                         </ul>
                     </li>
                     <li>
-                        <a><i class="glyphicon glyphicon-shopping-cart"></i> Каталог</a>
+                        <a><i class="glyphicon glyphicon-shopping-cart"></i>  Каталог</a>
                         <ul class="nav child_menu" style="display: none">
                             <li> @Html.ActionLink("Добавить товар", "CreateOfProduct", "Admin") </li>
                             <li> @Html.ActionLink("Управление каталогом", "GetAllProducts", "Admin") </li>
                         </ul>
                     </li>
-                    <li>
-                        <a><i class="glyphicon glyphicon-envelope"></i> @Html.ActionLink("Рассылка", "GetSubscribe","Admin") </a>
+                    <li> 
+                        <a href="@Url.Action("NewsLetter", "Admin") "><i class="glyphicon glyphicon-envelope"></i> Рассылка новостей</a>
                     </li>
                 </ul>
             </div>

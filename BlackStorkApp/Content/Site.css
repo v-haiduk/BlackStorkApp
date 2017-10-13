@@ -1,1 +1,25 @@
-﻿
+﻿.product-preview{
+    width: 30%;
+}
+
+.product-preview img {
+    width: 100%;
+}
+
+.table-controlles {
+    width: 10%;
+    text-align: center;
+}
+
+.modal-window {
+    width: 100%;
+}
+
+.modal-window img {
+    width: 100%;
+}
+
+p.main-block-margin {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}

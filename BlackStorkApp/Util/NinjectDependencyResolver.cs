@@ -5,11 +5,11 @@ using System.Web;
 using Ninject;
 using BLL.Services;
 using BLL.Interfaces;
+using BlackStorkApp.Interfaces;
+using BlackStorkApp.Helpers;
 using System.Web.Mvc;
 using BLL.DTO;
-using DAL.Entities;
-using DAL.Interfaces;
-using DAL.Repositories;
+
 
 
 namespace BlackStorkApp.Util
@@ -29,7 +29,10 @@ namespace BlackStorkApp.Util
             kernel.Bind<IMainService<TopicDTO>>().To<TopicService>();
             kernel.Bind<IMainService<ProductDTO>>().To<ProductService>();
             kernel.Bind<IUserService>().To<UserService>();
-            kernel.Bind<IMainService<EmailSendingDTO>>().To<EmailSendingService>();
+            kernel.Bind<IMainService<SubscribeDTO>>().To<SubscribeService>();
+            kernel.Bind<IFormsAuthenticationService>().To<FormsAuthenticationService>();
+
+            //kernel.Bind<IRepository<Product>>().To<>();
         }
 
         public object GetService(Type serviceType)

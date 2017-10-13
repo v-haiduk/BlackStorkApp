@@ -14,7 +14,7 @@ namespace BlackStorkApp.Controllers
     public class CatalogController : Controller
     {
         private IMainService<ProductDTO> productService;
-
+ 
         public CatalogController(IMainService<ProductDTO> service)
         {
             productService = service;
@@ -34,7 +34,7 @@ namespace BlackStorkApp.Controllers
 
             PaginationProductsModel productsWithPagination = CreatePaginationForProducts(productsForDisplay, page);
 
-            return View(productsWithPagination);
+            return View("Index", productsWithPagination);
         }
 
         /// <summary>
@@ -71,13 +71,18 @@ namespace BlackStorkApp.Controllers
         [HttpPost]
         public ActionResult Product(int id)
         {
-            ProductDTO productDTO = productService.GetElement(2);
+            ProductDTO productDTO = productService.GetElement(id);
             Mapper.Initialize(configuration => configuration.CreateMap<ProductDTO, ProductModel>());
             var productForDisplay = Mapper.Map<ProductDTO, ProductModel>(productDTO);
 
             return View("Product", productForDisplay);
         }
 
+        /// <summary>
+        /// The method finds products by predicate
+        /// </summary>
+        /// <param name="name">The name, which will be used like predicate</param>
+        /// <returns>JSON with result of search</returns>
         public JsonResult Search(string name)
         {
             var resultOfSearch = productService.FindElement(product => product.Name.Contains(name)).ToList();

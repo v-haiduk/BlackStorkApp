@@ -67,12 +67,9 @@ namespace BLL.Services
         /// <param name="element">Thew new account</param>
         public void CreateElement(UserAccountDTO element)
         {
-            UserAccount account = new UserAccount
-            {
-                UserAccountId = element.UserId,
-                Login = element.Login,
-                HashOfPassword = element.HashOfPassword
-            };
+            Mapper.Initialize(configuration => configuration.CreateMap<UserAccountDTO, UserAccount>());
+            var account = Mapper.Map<UserAccountDTO, UserAccount>(element);
+
             uow.UsersAccounts.Create(account);
             uow.SaveChanges();
         }
@@ -83,12 +80,9 @@ namespace BLL.Services
         /// <param name="element">The updated account</param>
         public void UpdateElement(UserAccountDTO element)
         {
-            UserAccount account = new UserAccount
-            {
-                UserAccountId = element.UserId,
-                Login = element.Login,
-                HashOfPassword = element.HashOfPassword
-            };
+            Mapper.Initialize(configuration => configuration.CreateMap<UserAccountDTO, UserAccount>());
+            var account = Mapper.Map<UserAccountDTO, UserAccount>(element);
+
             uow.UsersAccounts.Update(account);
             uow.SaveChanges();
         }

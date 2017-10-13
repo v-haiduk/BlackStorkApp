@@ -26,6 +26,32 @@ namespace BlackStorkApp
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/AdminStyle").Include(
+                "~/Content/bootstrap.min.css", 
+                "~/Content/animate.min.css", 
+                "~/Content/custom.css", 
+                "~/Content/maps/jquery-jvectormap-2.0.3.css",
+                "~/Content/icheck/flat/green.css",
+                "~/Content//floatexamples.css",
+                "~/Content/Site.css") );
+
+            bundles.Add(new ScriptBundle("~/Scripts/AdminScript").Include(
+                "~/Scripts/icheck/icheck.min.js",
+                "~/Scripts/jquery.min.js",
+                "~/Scripts/nprogress.js",
+                "~/Scripts/jquery-1.10.2.js", 
+                "~/Scripts/jquery.unobtrusive-ajax.js"));
+
+            bundles.Add(new StyleBundle("~/Content/MainStyle").Include(
+                "~/Content/main/main.css",
+                "~/Content/main/default-domainless.css",
+                "~/Content/main/black-stork.css",
+                "~/Content/bootstrap.min.css"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/MainScript").Include(
+                "~/Scripts/main/jquery.js",
+                "~/Scripts/main/functions.js"));
         }
     }
 }

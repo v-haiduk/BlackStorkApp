@@ -64,7 +64,6 @@ namespace BLL.Services
             }
 
             Mapper.Initialize(configuration => configuration.CreateMap<Product, ProductDTO>());
-
             return Mapper.Map<Product, ProductDTO>(product);
         }
 
@@ -74,13 +73,8 @@ namespace BLL.Services
         /// <param name="element">Thew new product</param>
         public void CreateElement(ProductDTO element)
         {
-            Product product = new Product
-            {
-                Name = element.Name,
-                Description = element.Description,
-                PathForMainPhoto = element.PathForMainPhoto,
-                PathForFolderWithPhotos = element.PathForFolderWithPhotos
-            };
+            Mapper.Initialize(configuration => configuration.CreateMap<ProductDTO, Product>() );
+            var product = Mapper.Map<ProductDTO, Product>(element);
 
             uow.Products.Create(product);
             uow.SaveChanges();
@@ -92,14 +86,8 @@ namespace BLL.Services
         /// <param name="item">The updated product</param>
         public void UpdateElement(ProductDTO element)
         {
-            Product product = new Product
-            {
-                ProductId = element.ProductId,
-                Name = element.Name,
-                Description = element.Description,
-                PathForMainPhoto = element.PathForMainPhoto,
-                PathForFolderWithPhotos = element.PathForFolderWithPhotos
-            };
+            Mapper.Initialize(configuration => configuration.CreateMap<ProductDTO, Product>());
+            var product = Mapper.Map<ProductDTO, Product>(element);
 
             uow.Products.Update(product);
             uow.SaveChanges();

@@ -1,0 +1,8 @@
+2017-09-03 12:48:10.0941|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-03 12:48:15.0091|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-03 12:49:20.3216|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-03 12:49:40.5816|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-03 12:49:55.3714|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-03 12:49:57.5695|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-03 12:50:01.3827|INFO|BlackStorkApp.MvcApplication|Application Error
+2017-09-03 12:50:44.6010|INFO|BlackStorkApp.MvcApplication|Application Error

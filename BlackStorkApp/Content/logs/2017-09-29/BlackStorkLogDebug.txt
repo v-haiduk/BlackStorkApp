@@ -1,0 +1,10 @@
+2017-09-29 01:49:38.2742|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-09-29 12:46:37.8507|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-09-29 13:04:46.1542|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-09-29 13:14:12.7124|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-09-29 13:20:05.3210|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-09-29 13:30:03.6497|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-09-29 13:34:14.8202|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-09-29 23:51:36.2203|INFO|BlackStorkApp.MvcApplication|Application Start
+2017-09-29 23:57:36.7774|INFO|BlackStorkApp.Controllers.AdminController|The new topic (<br/>test) has been added
+2017-09-29 23:58:49.8488|INFO|BlackStorkApp.Controllers.AdminController|The new product (<b>test product</p>) has been added

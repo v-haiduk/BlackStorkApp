@@ -51,13 +51,19 @@
         </div>
         <div class="x_content">
 
+            <!---place for modal window-->
+            <div id="modDialog" class="modal fade">
+                <div id="dialogContent" class="modal-dialog"></div>
+            </div>
+            <!---/.for modal window-->
+
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <td><b>#</b></td>
                     <td><b>Изображение</b></td>
-                    <td><b>Название</b></td>
-                    <td><b>Описание</b></td>
+                    <td><b>Название</b></td>                                      
+                    @*<td><b>Описание</b></td>*@
                     <td><b>Обзор</b></td>
                     <td><b>Изменить</b></td>
                     <td><b>Удалить</b></td>
@@ -68,24 +74,20 @@
                 {
                     <tr>
                         <td> @currentProduct.ProductId </td>
-                        <td> <img src="@currentProduct.PathForMainPhoto"/> </td>
-                        <td> @currentProduct.Name </td>
-                        <td> @currentProduct.Description </td>
-                        <td>
-                            @using (Html.BeginForm("Product", "Catalog", FormMethod.Post))
-                            {
-                                <input type="hidden" name="id" value="@currentProduct.ProductId" />
-                                <button type="submit" class="btn btn-link">
-                                    <span class="glyphicon glyphicon-open"></span>
-                                </button>
-                            }
+                        <td class="product-preview"> <img src="@currentProduct.PathForMainPhoto" /> </td>
+                        <td> @currentProduct.Name </td>                                            
+                        @*<td> @currentProduct.Description </td>*@
+                        <td class="table-controlles">
+                            <a href="@Url.Action("GetDescriptionOfProduct", "Admin", new { id = currentProduct.ProductId } )" class="btn btn-link productItem">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </a>
                         </td>
-                        <td>
-                            <a href="/Admin/EditOfProduct/@currentProduct.ProductId" class="btn btn-link">
+                        <td class="table-controlles">
+                            <a href="@Url.Action("EditOfProduct", "Admin", new { id = currentProduct.ProductId })" class="btn btn-link">
                                 <span class="glyphicon glyphicon-edit"></span>
                             </a>
                         </td>
-                        <td>                           
+                        <td class="table-controlles">                           
                             @using (Html.BeginForm("DeleteOfProduct", "Admin", FormMethod.Post))
                             {
                                 <input type="hidden" name="id" value="@currentProduct.ProductId"/>
@@ -98,6 +100,20 @@
                 }
                 </tbody>
             </table>
+
+            <script type="text/javascript">
+                $(function () {
+                    $.ajaxSetup({ cache: false });
+                    $(".productItem").click(function (e) {
+                        e.preventDefault();
+                        $.get(this.href, function (data) {
+                            $('#dialogContent').html(data);
+                            $('#modDialog').modal('show');
+                        });
+                    });
+                })
+            </script>
+
             <div class="btn-group">
                 @Html.PageLinks(Model.Page, x => Url.Action("GetAllProducts", new { page = x }))
             </div>
